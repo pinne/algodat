@@ -1,0 +1,28 @@
+uppgift 1.2
+Största värdet på n är 16. gcc 32 bit
+
+uppgift 1.5
+-> 1 1
+2
+5 calls
+
+-> 1 2
+3
+9 calls
+
+-> 1 3
+4
+14 calls
+
+-> 1 4
+5
+20 calls
+
+-> 1 5
+6
+27 calls
+
+-> 1 6
+7
+35 calls
+
