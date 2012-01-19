@@ -25,7 +25,8 @@ int antal_vagar(int m, int n)
 	int v = 0;
 	CALL_COUNT += 1;
 
-	if (m == 0 && n == 0) {
+	if (m == 0 || n == 0) {
+//	if (m == 0 && n == 0) {
 		return 1;
 	} else {
 		if (m > 0)

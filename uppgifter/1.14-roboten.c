@@ -2,57 +2,76 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAXMOVE 16
+#define MAXMOVE 18
+int MINMOVE;
 
-int move(char boxen[], int moves, int* minmove, char type);
+int move(char boxen[], char orig[], int moves);//, char type);
+void shift_right(char boxen[], int i);
 
 int main(int argc, char *argv[])
 {
-	int minmove = MAXMOVE;
-	int* ptr_mm = &minmove;
+	MINMOVE = MAXMOVE;
+	char last[6] = "ABCDE";
+	move(argv[1], last, 0);//, 'q');
 
-	move(argv[1], 0, ptr_mm, 'q');
-
-	if (minmove <= MAXMOVE) {
-		printf("MIN MOVES: %d", minmove);
+	if (MINMOVE <= MAXMOVE) {
+		printf("MIN MOVES: %d", MINMOVE);
 		printf("\n");
 	}
 
 	return 0;
 }
 
-int move(char boxen[], int moves, int* minmove, char type)
+int match(char boxen[], char orig[], int moves)
 {
-	printf("%s, m:%d\n", boxen, moves);
+	if (strcmp(boxen, "ABCDE") == 0) {
+		if (moves < MINMOVE) {
+			MINMOVE = moves;
+			printf("minmove %d\n", MINMOVE);
+		}
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+void swap_first(char boxen[])
+{
+	char tmp = boxen[1];
+	boxen[1] = boxen[0];
+	boxen[0] = tmp;
+}
+
+void shift_right(char boxen[], int i)
+{
+	if (i-- > 0) {
+		char tmp = boxen[4];
+		boxen[4] = boxen[3];
+		boxen[3] = boxen[2];
+		boxen[2] = boxen[1];
+		boxen[1] = boxen[0];
+		boxen[0] = tmp;
+		shift_right(boxen, i);
+	}
+}
+
+int move(char boxen[], char last[], int moves)//, char type)
+{
+	strcpy(last, boxen);
 
 	if (strcmp(boxen, "ABCDE") == 0) {
-		if (moves < *minmove) {
-			*minmove = moves;
-			printf("minmove %d\n", *minmove);
+		if (moves < MINMOVE) {
+			MINMOVE = moves;
 		}
 		return 0;
-	} else if (moves >= *minmove) {
-		return 0;
-	} else {
-		char tmp;
-		if (type == 'b') {
-			/* swap two first */
-			tmp = boxen[1];
-			boxen[1] = boxen[0];
-			boxen[0] = tmp;
-		} else if (type == 's') {
-			/* shift right */
-			tmp = boxen[4];
-			boxen[4] = boxen[3];
-			boxen[3] = boxen[2];
-			boxen[2] = boxen[1];
-			boxen[1] = boxen[0];
-			boxen[0] = tmp;
-		}
-		moves += 1;
+	} else if (moves < MINMOVE) {
+		swap_first(boxen);
+		move(boxen, last, moves + 1);
+		swap_first(boxen);
 
-		move(boxen, moves, minmove, 'b');
-		move(boxen, moves, minmove, 's');
+		shift_right(boxen, 1);
+		move(boxen, last, moves + 1);
+		shift_right(boxen, 4);
 	}
 	return 0;
 }
