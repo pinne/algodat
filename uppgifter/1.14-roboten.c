@@ -2,32 +2,33 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAXMOVE 18
-int MINMOVE;
+#define MAXMOVE 32
 
-int move(char boxen[], char orig[], int moves);//, char type);
+int match(char boxen[], int moves, int* minmove);
+void move(char boxen[], int moves, int* minmove);
+void swap_first(char boxen[]);
 void shift_right(char boxen[], int i);
 
 int main(int argc, char *argv[])
 {
-	MINMOVE = MAXMOVE;
-	char last[6] = "ABCDE";
-	move(argv[1], last, 0);//, 'q');
+	int minmove = MAXMOVE;
+	int* mm_ptr = &minmove;
+	move(argv[1], 0, mm_ptr);
 
-	if (MINMOVE <= MAXMOVE) {
-		printf("MIN MOVES: %d", MINMOVE);
+	if (minmove < MAXMOVE) {
+		printf("min moves %d", minmove);
 		printf("\n");
 	}
 
 	return 0;
 }
 
-int match(char boxen[], char orig[], int moves)
+int match(char boxen[], int moves, int* minmove)
 {
 	if (strcmp(boxen, "ABCDE") == 0) {
-		if (moves < MINMOVE) {
-			MINMOVE = moves;
-			printf("minmove %d\n", MINMOVE);
+		if (moves < *minmove) {
+			*minmove = moves;
+			printf("minmove %d\n", *minmove);
 		}
 		return 1;
 	} else {
@@ -55,24 +56,20 @@ void shift_right(char boxen[], int i)
 	}
 }
 
-int move(char boxen[], char last[], int moves)//, char type)
+void move(char boxen[], int moves, int* minmove)
 {
-	strcpy(last, boxen);
-
 	if (strcmp(boxen, "ABCDE") == 0) {
-		if (moves < MINMOVE) {
-			MINMOVE = moves;
+		if (moves < *minmove) {
+			*minmove = moves;
 		}
-		return 0;
-	} else if (moves < MINMOVE) {
+	} else if (moves < *minmove) {
 		swap_first(boxen);
-		move(boxen, last, moves + 1);
+		move(boxen, moves + 1, minmove);
 		swap_first(boxen);
 
 		shift_right(boxen, 1);
-		move(boxen, last, moves + 1);
+		move(boxen, moves + 1, minmove);
 		shift_right(boxen, 4);
 	}
-	return 0;
 }
 
