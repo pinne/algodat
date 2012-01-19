@@ -28,11 +28,10 @@ int match(char boxen[], int moves, int* minmove)
 	if (strcmp(boxen, "ABCDE") == 0) {
 		if (moves < *minmove) {
 			*minmove = moves;
-			printf("minmove %d\n", *minmove);
 		}
-		return 1;
-	} else {
 		return 0;
+	} else {
+		return -1;
 	}
 }
 
@@ -58,18 +57,14 @@ void shift_right(char boxen[], int i)
 
 void move(char boxen[], int moves, int* minmove)
 {
-	if (strcmp(boxen, "ABCDE") == 0) {
-		if (moves < *minmove) {
-			*minmove = moves;
-		}
-	} else if (moves < *minmove) {
+	if (match(boxen, moves, minmove) && moves < *minmove) {
 		swap_first(boxen);
 		move(boxen, moves + 1, minmove);
-		swap_first(boxen);
+		swap_first(boxen); /* restore */
 
 		shift_right(boxen, 1);
 		move(boxen, moves + 1, minmove);
-		shift_right(boxen, 4);
+		shift_right(boxen, 4); /* restore */
 	}
 }
 
