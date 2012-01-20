@@ -9,7 +9,7 @@ void trade(int blue, int white, int red, int n)
 	if (blue == white && blue == red) {
 		if (n < MINTRADE + 1)
 			MINTRADE = n;
-	} else if (n < MINTRADE) {
+	} else if (n < MINTRADE + 1) {
 		if (blue > 0)
 			trade(blue - 1, white + 3, red + 1, n + 1);
 		if (white > 0)
