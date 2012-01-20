@@ -28,9 +28,8 @@ int main(int argc, char *argv[])
 
 	trade(blue, white, red, 0);
 
-	if (MINTRADE < MAXTRADE + 1)
-		printf("%d", MINTRADE);
-	printf("\n");
+	if (MINTRADE < MAXTRADE)
+		printf("%d\n", MINTRADE);
 
 	return 0;
 }
