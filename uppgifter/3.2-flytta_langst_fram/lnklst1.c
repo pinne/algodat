@@ -3,9 +3,11 @@
 #include <string.h>
 
 typedef struct person {
-	char          namn[11];
+	char namn[11];
 	struct person *next;
 } person;
+
+char FILNAMN[24];
 
 void las_in(person **start) {
 	FILE   *fil;
@@ -15,7 +17,8 @@ void las_in(person **start) {
 
 	*start = NULL;
 	gp = NULL;
-	fil = fopen("NAMN2.DAT", "rt");
+	//fil = fopen("NAMN1.DAT", "rt");
+	fil = fopen(FILNAMN, "rt");
 	while (!feof(fil)) {
 		fscanf(fil, "%s", n);
 		if (!feof(fil)) {
@@ -32,10 +35,30 @@ void las_in(person **start) {
 	fclose(fil);
 }
 
-/* Här ska den önskade funktionen in
-   void overst( ...
-   }
-   */
+/*
+ * returns the element before the target for ->next trickery.
+ */
+person *find(person **start, char *namn)
+{
+	person *p;
+	p = *start;
+	
+	while (strcmp(p->next->namn, namn)) {
+		p = p->next;
+	}
+	return p;
+}
+
+void overst(person **start, char *namn)
+{
+	person *before = find(start, namn);
+	person *target;
+	target = before->next;
+
+	before->next = target->next;
+	target->next = *start;
+	*start = target;
+}
 
 void skriv_ut(person *start) {
 	person *p;
@@ -57,13 +80,25 @@ void avsluta(person **start) {
 	}
 }
 
-int main(void) {
+int main(int argc, char *argv[]) {
+	if (argc < 3) {
+		printf("USAGE: %s <filename> <name> [<name>]\n", argv[0]);
+		return 1;
+	}
 	person *start;
+	strcpy(FILNAMN, argv[1]);
 
 	las_in(&start);
-	//overst(...
-	//overst(...
+	skriv_ut(start);
+
+	int n;
+	for (n = 2; n < argc; n++) {
+		overst(&start, argv[n]);
+	}
+
 	skriv_ut(start);
 	avsluta(&start);
+
+	return 0;
 }
 
