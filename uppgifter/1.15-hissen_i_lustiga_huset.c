@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAXMOVE 64
+#define MAXMOVE 128
 int MINMOVE;
 int FLOORS;
 int UPWARD;

@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+FreeStack	stack.c	/^void FreeStack(void){$/;"	f
+InitStack	stack.c	/^void InitStack(int s, int m){$/;"	f
+IsEmpty	stack.c	/^int IsEmpty(void){$/;"	f
+IsFull	stack.c	/^int IsFull(void){$/;"	f
+Pop	stack.c	/^void *Pop(void){$/;"	f
+Push	stack.c	/^void Push(void *x){$/;"	f
+antal	stack.c	/^static int antal,size;$/;"	v	file:
+main	main.c	/^int main(void){$/;"	f
+plats	stack.c	/^static int plats=-1;$/;"	v	file:
+size	stack.c	/^static int antal,size;$/;"	v	file:
+stack	stack.c	/^char *stack;$/;"	v

@@ -1,6 +1,9 @@
 #include "stack.h"
 #include <string.h>
 
+static char stack[64];
+static int plats = -1;
+
 void push(char c)
 {
 	stack[++plats] = c;
@@ -18,6 +21,9 @@ int isempty(void)
 
 int isfull(void)
 {
-	return !(plats == 63);
+	if (plats == 63)
+		return 1;
+	else
+		return 0;
 }
 
