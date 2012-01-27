@@ -1,0 +1,14 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+laes_in	lnklst2.c	/^void laes_in(namntyp **l1, char filnamn[])$/;"	f
+main	lnklst2.c	/^int main(void)$/;"	f
+merge	lnklst2.c	/^void merge(namntyp *l1, namntyp *l2, namntyp **sl)$/;"	f
+namn	lnklst2.c	/^	char namn[10];$/;"	m	struct:namntyp	file:
+namntyp	lnklst2.c	/^typedef struct namntyp {$/;"	s	file:
+namntyp	lnklst2.c	/^} namntyp;$/;"	t	typeref:struct:namntyp	file:
+nasta	lnklst2.c	/^	struct namntyp *nasta;$/;"	m	struct:namntyp	typeref:struct:namntyp::namntyp	file:
+skriv_ut	lnklst2.c	/^void skriv_ut(namntyp *sl)$/;"	f
