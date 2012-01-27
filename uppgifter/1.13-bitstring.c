@@ -2,33 +2,40 @@
 #include <stdlib.h>
 #include <string.h>
 
-void bitstr(char str[], int k, int len);
+int rpow(int i, int e);
+
+void bitstr(char *str, int pos, int len)
+{
+	if (pos / 2 < rpow(len, 2) + 1) {
+		if (pos % len == 0 && pos > 0)
+			strcat(str, ", ");
+
+		if (str[pos - len] == 0)
+			bitstr(strcat(str, "1"), pos + 1, len);
+		else
+			bitstr(strcat(str, "0"), pos + 1, len);
+	}
+}
 
 int main(int argc, char *argv[])
 {
-	int val = 0;
-	int len;
-	len = atoi(argv[1]);
-
-	int i;
-	char str[64];
+	int len = atoi(argv[1]);
+	char *str;
+	str = malloc(2 + rpow(len, 2) * 3 * sizeof(char));
 	str[0] = '\0';
 
-	bitstr("", 0, len);
+	bitstr(str, 0, len);
+	printf("%s\n", str);
+	free(str);
 
 	return 0;
 }
 
-void bitstr(char str[], int k, int len)
+int rpow(int i, int e)
 {
-	if (str[len] == '0') {
-		str[len] = '1';
-	} else {
-		str[len] = '0';
-		str[len]
-	}
-
-	if (
-	bitstr(strcat(s, "0"), k+1, len);
+	if (e-- == 0)
+		return 1;
+	else
+		return i * rpow(i, e);
 }
 

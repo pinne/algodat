@@ -1,0 +1,20 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+FreeStack	stack.c	/^void FreeStack(void){$/;"	f
+InitStack	stack.c	/^void InitStack(int antalstackar, int storlek, int maxantal){$/;"	f
+IsEmpty	stack.c	/^int IsEmpty(int nr){$/;"	f
+IsFull	stack.c	/^int IsFull(int nr){$/;"	f
+Pop	stack.c	/^void *Pop(int nr){$/;"	f
+Push	stack.c	/^void Push(int nr, void *x){$/;"	f
+antal	stack.c	/^static int antal, size;$/;"	v	file:
+main	BC52_StckSort.c	/^int main(void){$/;"	f
+plats	stack.c	/^	int  plats;$/;"	m	struct:stackinfo	file:
+size	stack.c	/^static int antal, size;$/;"	v	file:
+stack	stack.c	/^static stackinfo *stack;$/;"	v	file:
+stackadr	stack.c	/^	char *stackadr;$/;"	m	struct:stackinfo	file:
+stackinfo	stack.c	/^struct stackinfo{$/;"	s	file:
+stackinfo	stack.c	/^typedef struct stackinfo stackinfo;$/;"	t	typeref:struct:stackinfo	file:
