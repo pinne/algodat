@@ -35,12 +35,17 @@ void laes_in(namntyp **l1, char filnamn[])
 
 void merge(namntyp *l1, namntyp *l2, namntyp **sl)
 {
+	printf("%s\t", l1->namn);
+	printf("%s\n", l2->namn);
+	printf("strcmp: %d\n", strcmp(l1->namn, l2->namn));
+	if (strcmp(l1->namn, l2->namn) < 0)
+		printf("%s\n", l1->namn);
 }
 
 void skriv_ut(namntyp *sl)
 {
 	namntyp *a;
-	while (sl!=NULL) {
+	while (sl != NULL) {
 		printf("%s\n", sl->namn);
 		a = sl;
 		sl = sl->nasta;
@@ -56,11 +61,11 @@ int main(void)
 	laes_in(&lista1, "UPPG3A.DAT");
 	laes_in(&lista2, "UPPG3B.DAT");
 	merge(lista1, lista2, &slutlista);
-	laes_in(&lista1, "UPPG3C.DAT");
-	laes_in(&lista2, "UPPG3D.DAT");
-	merge(lista1, lista2, &slutlista);
-	laes_in(&lista1, "UPPG3E.DAT");
-	skriv_ut(slutlista);
+	//laes_in(&lista1, "UPPG3C.DAT");
+	//laes_in(&lista2, "UPPG3D.DAT");
+	//merge(lista1, lista2, &slutlista);
+	//laes_in(&lista1, "UPPG3E.DAT");
+	//skriv_ut(slutlista);
 
 	return 0;
 }
