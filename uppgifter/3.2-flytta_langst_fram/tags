@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+FILNAMN	lnklst1.c	/^char FILNAMN[24];$/;"	v
+avsluta	lnklst1.c	/^void avsluta(person **start) {$/;"	f
+find	lnklst1.c	/^person *find(person **start, char *namn)$/;"	f
+las_in	lnklst1.c	/^void las_in(person *start) {$/;"	f
+main	lnklst1.c	/^int main(int argc, char *argv[]) {$/;"	f
+namn	lnklst1.c	/^	char namn[11];$/;"	m	struct:person	file:
+next	lnklst1.c	/^	struct person *next;$/;"	m	struct:person	typeref:struct:person::person	file:
+overst	lnklst1.c	/^void overst(person **start, char *namn)$/;"	f
+person	lnklst1.c	/^typedef struct person {$/;"	s	file:
+person	lnklst1.c	/^} person;$/;"	t	typeref:struct:person	file:
+skriv_ut	lnklst1.c	/^void skriv_ut(person *start) {$/;"	f
