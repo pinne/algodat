@@ -7,8 +7,7 @@ typedef struct namntyp {
 	struct namntyp *nasta;
 } namntyp;
 
-namntyp *head;
-namntyp *tail;
+void skriv_ut(namntyp *sl);
 
 void laes_in(namntyp **l1, char filnamn[])
 {
@@ -36,41 +35,71 @@ void laes_in(namntyp **l1, char filnamn[])
 	fclose(fil);
 }
 
-//void append(namntyp **sl, namntyp *l1)
-//{
-//	namntyp *new;
-//	new = malloc(sizeof(namntyp));
-//	strcpy(new->namn, l1->namn);
-//
-//	tail->nasta = new;
-//	tail = tail->nasta;
-//}
+struct namntyp *list_tail(namntyp *list)
+{
+	while (list != NULL && list->nasta != NULL) {
+		list = list->nasta;
+	}
+	return list;
+}
+
+int len(namntyp *list)
+{
+	int n;
+
+	if (list == NULL) {
+		n = 0;
+	} else {
+		for (n = 1; list->nasta != NULL; n += 1) {
+			list = list->nasta;
+		}
+	}
+	return n;
+}
 
 void append(namntyp **sl, namntyp *list)
 {
-	namntyp *new;
-	new = malloc(sizeof(namntyp));
-	strcpy(new->namn, list->namn);
+	static int counter;
+	namntyp *tail = list_tail(*sl);
 
-	tail->nasta = new;
-	tail = tail->nasta;
-	tail->nasta = NULL;
+	if (counter++ == 0) {
+		strcpy(tail->namn, list->namn);
+		tail->nasta = NULL;
+	} else {
+		namntyp *new = malloc(sizeof(namntyp));
+		strcpy(new->namn, list->namn);
+		tail->nasta = new;
+		tail->nasta->nasta = NULL;
+	}
 }
 
-void merge(namntyp *l1, namntyp *l2, namntyp **sl)
+void merge(namntyp *left, namntyp *right, namntyp **sl)
+{
+	*sl = malloc(sizeof(namntyp));
+
+	while (left != NULL && right != NULL) {
+		if (strcmp(left->namn, right->namn) <= 0) {
+			append(sl, left);
+			left = left->nasta;
+		} else {
+			append(sl, right);
+			right = right->nasta;
+		}
+	}
+}
+
+void rmerge(namntyp *l1, namntyp *l2, namntyp **sl)
 {
 	if (strcmp(l1->namn, l2->namn) <= 0) {
+		/* If l1 is smaller than l2, make sl->nasta point to l1 */
 		append(sl, l1);
 		if (l1->nasta != NULL)
-			merge(l1->nasta, l2, sl);
-		else if (l2 != NULL)
-			tail->nasta = l2;
+			rmerge(l1->nasta, l2, sl);
 	} else if (strcmp(l1->namn, l2->namn) > 0) {
+		/* If l2 is smaller than l1, make sl->nasta point to l2 */
 		append(sl, l2);
 		if (l2->nasta != NULL)
-			merge(l1, l2->nasta, sl);
-		else if (l1 != NULL)
-			tail->nasta = l1;
+			rmerge(l1, l2->nasta, sl);
 	}
 }
 
@@ -85,23 +114,11 @@ void skriv_ut(namntyp *sl)
 	}
 }
 
-int len(namntyp *lista)
-{
-	int n = 0;
-	while (lista != NULL) {
-		lista = lista->nasta;
-		n++;
-	}
-	return n;
-}
-
 int main(int argc, char *argv[])
 {
 	namntyp *lista1;
 	namntyp *lista2;
-	namntyp *slutlista = malloc(sizeof(namntyp)*20);
-	head = slutlista;
-	tail = slutlista;
+	namntyp *slutlista;
 
 	if (argc < 2) {
 		laes_in(&lista1, "UPPG3A.DAT");
@@ -110,14 +127,13 @@ int main(int argc, char *argv[])
 		laes_in(&lista1, argv[1]);
 		laes_in(&lista2, argv[2]);
 	}
-	if (len(lista1) > len(lista2))
-		merge(lista1, lista2, &slutlista);
-	else
-		merge(lista2, lista1, &slutlista);
 
+	merge(lista1, lista2, &slutlista);
 	skriv_ut(slutlista);
+
 	free(lista1);
 	free(lista2);
+	free(slutlista);
 
 	return 0;
 }
