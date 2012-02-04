@@ -1,0 +1,23 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+antal	lista_med_damer.c	/^int antal(dam * p)$/;"	f
+dam	lista_med_damer.c	/^typedef struct dam {$/;"	s	file:
+dam	lista_med_damer.c	/^} dam;$/;"	t	typeref:struct:dam	file:
+efter	lista_med_damer.c	/^dam *efter(dam * p, char n[])$/;"	f
+finns	lista_med_damer.c	/^int finns(dam * aktuell, char n[])$/;"	f
+fore	lista_med_damer.c	/^dam *fore(dam * p, char n[])$/;"	f
+init	lista_med_damer.c	/^void init(dam ** liststart)$/;"	f
+main	lista_med_damer.c	/^int main(void)$/;"	f
+namn	lista_med_damer.c	/^	char namn[15];$/;"	m	struct:dam	file:
+next	lista_med_damer.c	/^	struct dam *next;$/;"	m	struct:dam	typeref:struct:dam::dam	file:
+placeraefter	lista_med_damer.c	/^int placeraefter(dam * p, char nytt[], char gam[])$/;"	f
+placerafore	lista_med_damer.c	/^int placerafore(dam ** p, char nytt[], char gam[])$/;"	f
+placeraforst	lista_med_damer.c	/^void placeraforst(dam ** p, char n[])$/;"	f
+placerasist	lista_med_damer.c	/^void placerasist(dam ** p, char n[])$/;"	f
+skrivlista	lista_med_damer.c	/^void skrivlista(dam * p)$/;"	f
+tabortnamn	lista_med_damer.c	/^int tabortnamn(dam ** p, char n[])$/;"	f
+tabortplats	lista_med_damer.c	/^int tabortplats(dam ** p, int n)$/;"	f
