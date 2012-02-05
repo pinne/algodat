@@ -12,20 +12,20 @@ int STEP_S;
 int STEP_E;
 int STEP_V;
 int MINMOVE = INT_MAX;
-int been_here[100][100];
 
 struct tree {
 	int level;
 	int x;
 	int y;
+	struct tree *parent;
 	struct tree *left;
 	struct tree *right;
-} *root;
+};
 
 void print_node(struct tree *);
-void spawn_child(struct tree *);
-int vandra(struct tree *);
-void clear_mem(struct tree *);
+struct tree *spawn_child(struct tree *, struct tree *);
+void traverse(struct tree *);
+void clear_children(struct tree *);
 
 int main(int argc, char *argv[])
 {
@@ -41,44 +41,67 @@ int main(int argc, char *argv[])
 		start_x = atoi(argv[1]);
 		start_y = atoi(argv[2]);
 	}
-	struct tree root = {0, start_x, start_y, NULL, NULL};
-	vandra(&root);
-	clear_mem(&root);
+	struct tree root = { 0, start_x, start_y, NULL, NULL, NULL };
+	traverse(&root);
+	clear_children(&root);
 
 	return 0;
 }
 
-int vandra(struct tree * node)
+int create_tree(struct tree * node)
 {
 	print_node(node);
 	if (node->level < MAXDEPTH) {
-		spawn_child(node);
-		vandra(node->left);
+		node->left = spawn_child(node, node->left);
+		create_tree(node->left);
+		node->right = spawn_child(node, node->right);
+		create_tree(node->right);
 	}
 	return 0;
 }
 
-void spawn_child(struct tree * node)
+void traverse(struct tree * node)
 {
-	node->left = malloc(sizeof(struct tree));
-	node->left->level = node->level + 1;
-	node->left->x = node->x;
-	node->left->y = node->y;
-	node->left->left = NULL;
-	node->left->right = NULL;
-}
+	int level = node->level;
+	create_tree(node);
 
-void clear_mem(struct tree * node)
-{
-	if (node->level != 0) {
-		clear_mem(node->left);
+	while (level < MAXDEPTH) {
+
+		level += 1;
 	}
-	free(node);
 }
 
-void print_node(struct tree * node)
+struct tree *spawn_child(struct tree *node, struct tree *leaf)
+{
+	leaf = malloc(sizeof(struct tree));
+	leaf->level = node->level + 1;
+	leaf->x = node->x;
+	leaf->y = node->y;
+	leaf->parent = node;
+	leaf->left = NULL;
+	leaf->right = NULL;
+	print_node(leaf);
+	return leaf;
+}
+
+void clear_children(struct tree *node)
+{
+	if (node->level > 0) {
+		if (node->left != NULL)
+			clear_children(node->left);
+		if (node->right != NULL)
+			clear_children(node->right);
+		free(node);
+	} else if (node->level == 0) {
+		clear_children(node->left);
+		clear_children(node->right);
+	}
+}
+
+void print_node(struct tree *node)
 {
 	printf("Node\t%p\t", node);
-	printf("Level\t%d\tx %2d y %2d\n", node->level, node->x, node->y);
+	printf("Level\t%d\tx %2d y %2d\t parent %p\n",
+			node->level, node->x, node->y, node->parent);
 }
 
