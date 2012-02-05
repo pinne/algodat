@@ -1,0 +1,29 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+DEBUG	main.c	4;"	d	file:
+MAXTREEDEPTH	main.c	5;"	d	file:
+MINMOVE	main.c	/^int MINMOVE = INT_MAX;$/;"	v
+STEP_E	main.c	/^int STEP_E;$/;"	v
+STEP_N	main.c	/^int STEP_N;$/;"	v
+STEP_S	main.c	/^int STEP_S;$/;"	v
+STEP_V	main.c	/^int STEP_V;$/;"	v
+TARGET_X	main.c	/^int TARGET_X;$/;"	v
+TARGET_Y	main.c	/^int TARGET_Y;$/;"	v
+clear_children	tree.c	/^void clear_children(struct tree *node)$/;"	f
+create_tree	tree.c	/^void create_tree(struct tree *node, int depth)$/;"	f
+head	queue.c	/^} *head, *tail;$/;"	v	typeref:struct:queue
+main	main.c	/^int main(int argc, char *argv[])$/;"	f
+next	queue.c	/^	struct queue *next;$/;"	m	struct:queue	typeref:struct:queue::queue	file:
+node	queue.c	/^	struct tree *node;$/;"	m	struct:queue	typeref:struct:queue::tree	file:
+print_node	tree.c	/^void print_node(struct tree *node)$/;"	f
+queue	queue.c	/^struct queue {$/;"	s	file:
+spawn_child	tree.c	/^struct tree *spawn_child(struct tree *node, struct tree *leaf)$/;"	f
+tail	queue.c	/^} *head, *tail;$/;"	v	typeref:struct:queue
+traverse_inorder	tree.c	/^void traverse_inorder(struct tree *node)$/;"	f
+traverse_levelorder	tree.c	/^void traverse_levelorder(struct tree *node)$/;"	f
+traverse_postorder	tree.c	/^void traverse_postorder(struct tree *node)$/;"	f
+traverse_preorder	tree.c	/^void traverse_preorder(struct tree *node)$/;"	f
