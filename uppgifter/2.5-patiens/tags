@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ANTALFORSOK	PatiensElev.c	168;"	d	file:
+blanda	PatiensElev.c	/^void blanda(int lek[])$/;"	f
+farg	PatiensElev.c	/^	int valor, farg;$/;"	m	struct:kort	file:
+hog_tom	PatiensElev.c	/^void hog_tom(void)$/;"	f
+hogsta_topp	PatiensElev.c	/^int hogsta_topp(void)$/;"	f
+kort	PatiensElev.c	/^	struct kort kort;$/;"	m	struct:kortelement	typeref:struct:kortelement::kort	file:
+kort	PatiensElev.c	/^struct kort {$/;"	s	file:
+kortelement	PatiensElev.c	/^struct kortelement {$/;"	s	file:
+kvar	PatiensElev.c	/^int kvar(void)$/;"	f
+lagg_patiens	PatiensElev.c	/^int lagg_patiens(int lek[])$/;"	f
+length	PatiensElev.c	/^int length(int nr)$/;"	f
+lyckat	PatiensElev.c	/^int lyckat(void)$/;"	f
+main	PatiensElev.c	/^int main(void)$/;"	f
+nasta	PatiensElev.c	/^	struct kortelement *nasta;$/;"	m	struct:kortelement	typeref:struct:kortelement::kortelement	file:
+nstack	PatiensElev.c	/^int nstack[4] = { 0, 0, 0, 0 };$/;"	v
+overst	PatiensElev.c	/^struct kort overst(int nr)$/;"	f
+pop	PatiensElev.c	/^struct kort pop(int nr)$/;"	f
+push	PatiensElev.c	/^void push(struct kort p, int nr)$/;"	f
+samma_farg	PatiensElev.c	/^int samma_farg(int *hog)$/;"	f
+start	PatiensElev.c	/^struct kortelement *start[4] = { NULL, NULL, NULL, NULL };$/;"	v	typeref:struct:kortelement
+tom	PatiensElev.c	/^int tom(int nr)$/;"	f
+valor	PatiensElev.c	/^	int valor, farg;$/;"	m	struct:kort	file:

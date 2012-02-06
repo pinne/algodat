@@ -88,21 +88,6 @@ void merge(namntyp *left, namntyp *right, namntyp **sl)
 	}
 }
 
-void rmerge(namntyp *l1, namntyp *l2, namntyp **sl)
-{
-	if (strcmp(l1->namn, l2->namn) <= 0) {
-		/* If l1 is smaller than l2, make sl->nasta point to l1 */
-		append(sl, l1);
-		if (l1->nasta != NULL)
-			rmerge(l1->nasta, l2, sl);
-	} else if (strcmp(l1->namn, l2->namn) > 0) {
-		/* If l2 is smaller than l1, make sl->nasta point to l2 */
-		append(sl, l2);
-		if (l2->nasta != NULL)
-			rmerge(l1, l2->nasta, sl);
-	}
-}
-
 void skriv_ut(namntyp *sl)
 {
 	namntyp *a;
