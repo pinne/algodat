@@ -1,7 +1,11 @@
+#ifndef _tree_h
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
+
+//#define TWO_DIMENSION
 
 struct tree {
 	int level;
@@ -10,6 +14,10 @@ struct tree {
 	struct tree *parent;
 	struct tree *left;
 	struct tree *right;
+#ifndef TWO_DIMENSION
+	struct tree *up;
+	struct tree *down;
+#endif
 };
 
 void create_tree(struct tree *, int);
@@ -22,3 +30,4 @@ void traverse_postorder(struct tree *);
 void traverse_levelorder(struct tree *);
 void clear_children(struct tree *);
 
+#endif

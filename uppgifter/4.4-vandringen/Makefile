@@ -1,7 +1,7 @@
 # Author: skers@kth.se Varm kod
 CC = gcc
 OBJS = main.o tree.o queue.o
-COMPILER_FLAGS = -Wall
+COMPILER_FLAGS = -Wall -g
 UNAME := $(shell uname -s)
 INCLUDE = 
 LIBS = 
