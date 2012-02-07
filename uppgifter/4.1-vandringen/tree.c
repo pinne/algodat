@@ -104,4 +104,3 @@ void traverse_postorder(struct tree *node)
 #endif
 	print_node(node);
 }
-
