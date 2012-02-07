@@ -9,10 +9,9 @@
 #include <assert.h>
 
 struct queue {
-	int val;
 	struct queue *next;
 	struct queue *prev;
-	int visited;
+	int val;
 } *FIRST, *LAST;
 
 void init_queue(void);

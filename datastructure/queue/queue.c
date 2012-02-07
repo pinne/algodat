@@ -86,6 +86,7 @@ void print_queue()
 int queue_len(void)
 {
 	if (FIRST->next == LAST)
+		/* the empty queue */
 		return 0;
 
 	struct queue *i = FIRST;
