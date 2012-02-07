@@ -4,16 +4,17 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-dequeue	queue.c	/^struct queue *dequeue(struct queue *first)$/;"	f
-encapsulate	queue.c	/^struct queue *encapsulate(int val)$/;"	f
+FIRST	queue.h	/^} *FIRST, *LAST;$/;"	v	typeref:struct:queue
+LAST	queue.h	/^} *FIRST, *LAST;$/;"	v	typeref:struct:queue
+NDEBUG	queue.c	3;"	d	file:
+dequeue	queue.c	/^struct queue *dequeue()$/;"	f
 enqueue	queue.c	/^void enqueue(struct queue *element)$/;"	f
-first	queue.h	/^} *first, *last;$/;"	v	typeref:struct:queue
-init_queue	queue.c	/^struct queue *init_queue(struct queue **)$/;"	f
-last	queue.h	/^} *first, *last;$/;"	v	typeref:struct:queue
+init_queue	queue.c	/^void init_queue(void)$/;"	f
 main	queue.c	/^int main(int argc, char *argv[])$/;"	f
 next	queue.h	/^	struct queue *next;$/;"	m	struct:queue	typeref:struct:queue::queue
 prev	queue.h	/^	struct queue *prev;$/;"	m	struct:queue	typeref:struct:queue::queue
 print_element	queue.c	/^void print_element(struct queue *element)$/;"	f
+print_queue	queue.c	/^void print_queue()$/;"	f
 queue	queue.h	/^struct queue {$/;"	s
 queue_len	queue.c	/^int queue_len(void)$/;"	f
 val	queue.h	/^	int val;$/;"	m	struct:queue

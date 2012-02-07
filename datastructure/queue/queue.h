@@ -1,3 +1,7 @@
+/*
+ * copyright varm kod 2012
+ * skers@kth.se
+ */
 #ifndef _queue_h
 
 #include <stdio.h>
@@ -9,13 +13,14 @@ struct queue {
 	struct queue *next;
 	struct queue *prev;
 	int visited;
-} *first, *last;
+} *FIRST, *LAST;
 
-void init_queue(struct queue **, struct queue **);
+void init_queue(void);
 struct queue *encapsulate(int);
 void enqueue(struct queue *);
 struct queue *dequeue();
 void print_element(struct queue *);
+void print_queue();
 int queue_len(void);
 
 #endif

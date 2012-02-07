@@ -1,83 +1,100 @@
 #include "queue.h"
 
+#define NDEBUG
+
 int main(int argc, char *argv[])
 {
-	init_queue(&first, &last);
-	struct queue *new_queue = malloc(sizeof(struct queue));
-	new_queue->val = 42;
-	enqueue(new_queue);
-	struct queue *tmp = dequeue();
-	print_element(tmp);
+	init_queue();
+
+	/* queue all the things */
+	struct queue *new_queue;
+	int i;
+	for (i = 0; i < 10; i += 1) {
+		new_queue = malloc(sizeof(struct queue));
+		new_queue->val = i;
+		enqueue(new_queue);
+	}
+
+#ifndef NDEBUG
+	/* queue is in place */
+	printf("in queue: ");
+	print_queue();
+#endif
+
+	/* dequeue and print */
+	struct queue *from_queue;
+	while (queue_len() > 0) {
+		from_queue = dequeue();
+		if (from_queue != NULL)
+			print_element(from_queue);
+		free(from_queue);
+	}
 
 	return 0;
 }
 
-void init_queue(struct queue **first, struct queue **last)
+void init_queue(void)
 {
-	first = malloc(sizeof(struct queue));
-	last  = malloc(sizeof(struct queue));
-	assert(first != NULL);
-	assert(last != NULL);
-}
-
-struct queue *encapsulate(int val)
-{
-	struct queue *new_queue;
-	new_queue = malloc(sizeof(struct queue));
-	assert(new_queue != NULL);
-	new_queue->val = val;
-
-	return new_queue;
+	FIRST = malloc(sizeof(struct queue));
+	LAST = malloc(sizeof(struct queue));
+	FIRST->val = -1;
+	LAST->val = -1;
+	FIRST->prev = NULL;
+	FIRST->next = LAST;
+	LAST->prev = FIRST;
+	LAST->next = NULL;
 }
 
 void enqueue(struct queue *element)
 {
-	if (&first == NULL) {
-		/* empty queue */
-		init_queue(&first, &last);
-	}
-
-	last->next = element;
-	element->prev = last;
-	last = element;
-
+	element->prev = LAST->prev;
+	LAST->prev->next = element;
+	element->next = LAST;
+	LAST->prev = element;
 	return;
 }
 
-struct queue *dequeue(struct queue *first)
+struct queue *dequeue()
 {
-	struct queue *curr_first;
-	curr_first = first;
-
-	if ((first)->next == NULL)
-		first = NULL;
-	else {
-		first = first->next;
-		assert(first != NULL);
+	if (FIRST->next == LAST) {
+		/* the empty queue */
+		fprintf(stderr, "ERROR: Queue is empty\n");
+		return NULL;
 	}
 
-	return curr_first;
+	struct queue *curr;
+	curr = FIRST->next;
+	FIRST->next = FIRST->next->next;
+	FIRST->next->prev = FIRST;
+
+	return curr;
 }
 
 void print_element(struct queue *element)
 {
-	printf("%3d\n", element->val);
+	printf("%10d\n", element->val);
+}
+
+void print_queue()
+{
+	struct queue *i = FIRST;
+	while (i->next != LAST) {
+		i = i->next;
+		printf("%10d\n", i->val);
+	}
 }
 
 int queue_len(void)
 {
-	if (first == NULL)
+	if (FIRST->next == LAST)
 		return 0;
-	if (last == first)
-		return 1;
 
-	struct queue *i = first;
-	int len = 2;
-	while (i->next != last) {
+	struct queue *i = FIRST;
+	int len = 1;
+	while (i->next != LAST) {
 		i = i->next;
 		len += 1;
 	}
 
 	return len;
 }
-
