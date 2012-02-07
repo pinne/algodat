@@ -2,36 +2,6 @@
 
 #define NDEBUG
 
-//int main(int argc, char *argv[])
-//{
-//      init_queue();
-//
-//      /* queue all the things */
-//      struct queue *new_queue;
-//      int i;
-//      for (i = 0; i < 10; i += 1) {
-//              new_queue = malloc(sizeof(struct queue));
-//              new_queue->val = i;
-//              enqueue(new_queue);
-//      }
-//
-//#ifndef NDEBUG
-//      /* queue is in place */
-//      printf("in queue: ");
-//      print_queue();
-//#endif
-//
-//      /* dequeue and print */
-//      struct queue *from_queue;
-//      while (queue_len() > 0) {
-//              from_queue = dequeue();
-//              print_element(from_queue);
-//              free(from_queue);
-//      }
-//
-//      return 0;
-//}
-
 void init_queue(void)
 {
 	FIRST = malloc(sizeof(struct queue));
@@ -72,7 +42,6 @@ void print_element(struct queue *q)
 	printf("level %4d", q->level);
 	printf("%4d:", q->x);
 	printf("%d", q->y);
-	//printf("%4d", q->visited);
 	printf("\n");
 }
 

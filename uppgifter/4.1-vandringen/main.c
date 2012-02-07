@@ -1,12 +1,10 @@
-#include "tree.h"
 #include "queue.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <limits.h>
 
 #define NDEBUG
-#define MAXTREEDEPTH 20
+#define MAXTREEDEPTH 100
 
 int TARGET_X;
 int TARGET_Y;
@@ -14,35 +12,40 @@ int STEP_N;
 int STEP_S;
 int STEP_E;
 int STEP_W;
-int MINMOVE = INT_MAX;
-int VISITED[100 * 4][100 * 4];
+int VISITED[MAXTREEDEPTH * 4][MAXTREEDEPTH * 4];
 
 void vandringen(int start_x, int start_y);
 int test_node(struct queue *);
+void breadcrumb(struct queue *node);
 void reset_VISITED(void);
+void clear_queue(void);
 
 int main(int argc, char *argv[])
 {
-	TARGET_X = 0;
-	TARGET_Y = 0;
-	STEP_N = 8;
-	STEP_S = 3;
-	STEP_E = 5;
-	STEP_W = 6;
-	int start_x = 36;
-	int start_y = 27;
-	if (argc > 3) {
+	int start_x;
+	int start_y;
+
+	if (argc < 6) {
+		printf("USAGE: \n");
+		printf("%s <start x> <start y> <north> <south> <east> <west>\n",
+				argv[0]);
+		printf("%s 36 27 8 3 5 6\n", argv[0]);
+	} else if (argc >= 6) {
 		start_x = atoi(argv[1]);
 		start_y = atoi(argv[2]);
+		STEP_N = atoi(argv[3]);
+		STEP_S = atoi(argv[4]);
+		STEP_E = atoi(argv[5]);
+		STEP_W = atoi(argv[6]);
+		vandringen(start_x, start_y);
 	}
-	vandringen(start_x, start_y);
-
 	return 0;
 }
 
 void vandringen(int start_x, int start_y)
 {
 	init_queue();
+	reset_VISITED();
 
 	struct queue *root = malloc(sizeof(struct queue));
 	root->x = start_x;
@@ -52,7 +55,6 @@ void vandringen(int start_x, int start_y)
 
 	struct queue *node;
 
-	reset_VISITED();
 	while (queue_len() > 0 && test_node(node) != 0) {
 		node = dequeue();
 #ifndef NDEBUG
@@ -82,10 +84,8 @@ void vandringen(int start_x, int start_y)
 		west->level = node->level + 1;
 		breadcrumb(west);
 	}
-
 	printf("%d\n", node->level);
 	clear_queue();
-
 }
 
 int test_node(struct queue *node)
