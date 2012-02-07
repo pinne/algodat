@@ -25,8 +25,7 @@ int main(int argc, char *argv[])
 	struct queue *from_queue;
 	while (queue_len() > 0) {
 		from_queue = dequeue();
-		if (from_queue != NULL)
-			print_element(from_queue);
+		print_element(from_queue);
 		free(from_queue);
 	}
 
