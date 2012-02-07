@@ -1,0 +1,21 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+FIRST	queue.h	/^} *FIRST, *LAST;$/;"	v	typeref:struct:queue
+LAST	queue.h	/^} *FIRST, *LAST;$/;"	v	typeref:struct:queue
+NDEBUG	queue.c	3;"	d	file:
+dequeue	queue.c	/^struct queue *dequeue()$/;"	f
+enqueue	queue.c	/^void enqueue(struct queue *element)$/;"	f
+init_queue	queue.c	/^void init_queue(void)$/;"	f
+main	queue.c	/^int main(int argc, char *argv[])$/;"	f
+next	queue.h	/^	struct queue *next;$/;"	m	struct:queue	typeref:struct:queue::queue
+prev	queue.h	/^	struct queue *prev;$/;"	m	struct:queue	typeref:struct:queue::queue
+print_element	queue.c	/^void print_element(struct queue *element)$/;"	f
+print_queue	queue.c	/^void print_queue()$/;"	f
+queue	queue.h	/^struct queue {$/;"	s
+queue_len	queue.c	/^int queue_len(void)$/;"	f
+val	queue.h	/^	int val;$/;"	m	struct:queue
+visited	queue.h	/^	int visited;$/;"	m	struct:queue
