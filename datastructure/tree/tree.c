@@ -1,6 +1,15 @@
 #include "tree.h"
 #include <assert.h>
-//#include "queue.h" /* level-order traversal */
+
+int main(int argc, char *argv[])
+{
+	struct tree *root = malloc(sizeof(struct tree));
+
+	create_tree(root, 5);
+	traverse_preorder(root);
+
+	return 0;
+}
 
 void create_tree(struct tree *node, int depth)
 {
@@ -104,4 +113,3 @@ void traverse_postorder(struct tree *node)
 #endif
 	print_node(node);
 }
-

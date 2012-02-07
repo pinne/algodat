@@ -1,12 +1,12 @@
 # Author: skers@kth.se Varm kod
 CC = gcc
-OBJS = main.o tree.o queue.o
+OBJS = tree.o
 COMPILER_FLAGS = -Wall -g
 UNAME := $(shell uname -s)
 INCLUDE = 
 LIBS = 
 
-EXEC = vandringen.out
+EXEC = treetest.out
 
 $(EXEC): $(OBJS)
 	$(CC) $(COMPILER_FLAGS) -o $(EXEC) $(OBJS) $(LIBS)

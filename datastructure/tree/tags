@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+TWO_DIMENSION	tree.h	8;"	d
+clear_children	tree.c	/^void clear_children(struct tree *node)$/;"	f
+create_tree	tree.c	/^void create_tree(struct tree *node, int depth)$/;"	f
+down	tree.h	/^	struct tree *down;$/;"	m	struct:tree	typeref:struct:tree::tree
+left	tree.h	/^	struct tree *left;$/;"	m	struct:tree	typeref:struct:tree::tree
+level	tree.h	/^	int level;$/;"	m	struct:tree
+main	tree.c	/^int main(int argc, char *argv[])$/;"	f
+parent	tree.h	/^	struct tree *parent;$/;"	m	struct:tree	typeref:struct:tree::tree
+print_node	tree.c	/^void print_node(struct tree *node)$/;"	f
+right	tree.h	/^	struct tree *right;$/;"	m	struct:tree	typeref:struct:tree::tree
+spawn_child	tree.c	/^struct tree *spawn_child(struct tree *node, struct tree *leaf)$/;"	f
+traverse_inorder	tree.c	/^void traverse_inorder(struct tree *node)$/;"	f
+traverse_postorder	tree.c	/^void traverse_postorder(struct tree *node)$/;"	f
+traverse_preorder	tree.c	/^void traverse_preorder(struct tree *node)$/;"	f
+tree	tree.h	/^struct tree {$/;"	s
+up	tree.h	/^	struct tree *up;$/;"	m	struct:tree	typeref:struct:tree::tree
+x	tree.h	/^	int x;$/;"	m	struct:tree
+y	tree.h	/^	int y;$/;"	m	struct:tree

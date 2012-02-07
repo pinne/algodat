@@ -5,7 +5,7 @@
 #include <string.h>
 #include <limits.h>
 
-//#define TWO_DIMENSION
+#define TWO_DIMENSION
 
 struct tree {
 	int level;
