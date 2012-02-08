@@ -1,0 +1,32 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+FIRST	queue.h	/^} *FIRST, *LAST;$/;"	v	typeref:struct:queue
+LAST	queue.h	/^} *FIRST, *LAST;$/;"	v	typeref:struct:queue
+NDEBUG	queue.c	3;"	d	file:
+STORLEK	taltriangeln.c	5;"	d	file:
+berakna	taltriangeln.c	/^void berakna()$/;"	f
+clear_array	taltriangeln.c	/^void clear_array(void)$/;"	f
+dequeue	queue.c	/^struct queue *dequeue()$/;"	f
+enqueue	queue.c	/^void enqueue(struct queue *element)$/;"	f
+fill_array	taltriangeln.c	/^void fill_array(void)$/;"	f
+init_queue	queue.c	/^void init_queue(void)$/;"	f
+level	queue.h	/^	int level;$/;"	m	struct:queue
+main	taltriangeln.c	/^int main(void)$/;"	f
+max	taltriangeln.c	/^int max = 0;$/;"	v
+next	queue.h	/^	struct queue *next;$/;"	m	struct:queue	typeref:struct:queue::queue
+prev	queue.h	/^	struct queue *prev;$/;"	m	struct:queue	typeref:struct:queue::queue
+print_element	queue.c	/^void print_element(struct queue *q)$/;"	f
+print_queue	queue.c	/^void print_queue()$/;"	f
+print_sum	taltriangeln.c	/^void print_sum(void)$/;"	f
+print_tab	taltriangeln.c	/^void print_tab(void)$/;"	f
+queue	queue.h	/^struct queue {$/;"	s
+queue_len	queue.c	/^int queue_len(void)$/;"	f
+sum	taltriangeln.c	/^int sum[STORLEK][STORLEK];$/;"	v
+tab	taltriangeln.c	/^int tab[STORLEK][STORLEK];$/;"	v
+val	queue.h	/^	int val;$/;"	m	struct:queue
+x	queue.h	/^	int x;$/;"	m	struct:queue
+y	queue.h	/^	int y;$/;"	m	struct:queue

@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define STORLEK 30
+int tab[STORLEK][STORLEK],max=0;
+
+void berakna(int rad,int kol,int s){
+  if(rad==STORLEK-1){
+    s=s+tab[rad][kol];
+    if(s>max) max=s;
+  }
+  else {
+    berakna(rad+1,kol,  s+tab[rad][kol]);
+    berakna(rad+1,kol+1,s+tab[rad][kol]);
+  }
+}
+
+int main(void){
+  FILE *infil;
+  int i,j;
+  for(i=0;i<STORLEK;i++)
+    for(j=0;j<=i;j++)
+      tab[i][j]=rand()%100;
+  berakna(0,0,0);
+  printf("Maximal summa: %d\n",max);
+}

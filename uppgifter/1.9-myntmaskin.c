@@ -1,45 +1,58 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
-#define MAXSUM 99999
+#define MAXSUM INT_MAX
+#define SIZE 1000000
 
-int find_score(int target, int point, int sum, int* minsum, int coin);
+int MINSUM;
+int TARGET;
+int BEST[SIZE];
+
+void find_score(int, int);
+void reset_array(void);
 
 int main(int argc, char *argv[])
 {
-	int target;
-	int minsum = MAXSUM;
-	int* ptr_ms = &minsum;
-	target = atoi(argv[1]);
+	TARGET = atoi(argv[1]);
+	MINSUM = MAXSUM;
+	reset_array();
 
-	find_score(target, 1, 0, ptr_ms, 0);
+	find_score(1, 0);
 
-	if (minsum < MAXSUM) {
-		printf("%d", minsum);
+	if (MINSUM < MAXSUM) {
+		printf("%d", MINSUM);
 		printf("\n");
 	}
 
 	return 0;
 }
 
-int find_score(int target, int point, int sum, int* minsum, int coin)
+void find_score(int point, int sum)
 {
-	if (point == target) {
-		if (sum < *minsum) {
-			*minsum = sum;
-		}
-		return 0;
-	} else if (point > target) {
-		return 0;
+	/* backtracking */
+	if (sum >= BEST[point]) {
+		return;
+	} else {
+		BEST[point] = sum;
 	}
-	if (coin == 5)
-		point += 4;
-	if (coin == 10)
-		point *= 3;
-	sum += coin;
 
-	find_score(target, point, sum, minsum, 5);
-	find_score(target, point, sum, minsum, 10);
-	return 0;
+	if (point == TARGET) {
+		if (sum < MINSUM) {
+			MINSUM = sum;
+		}
+		return;
+	} else if (point > TARGET) {
+		return;
+	}
+	find_score(point + 4, sum + 5);
+	find_score(point * 3, sum + 10);
 }
 
+void reset_array(void)
+{
+	int i;
+	for (i = 0; i < SIZE; i += 1) {
+		BEST[i] = INT_MAX;
+	}
+}
