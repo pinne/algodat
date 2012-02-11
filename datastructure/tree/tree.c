@@ -8,6 +8,14 @@ int main(int argc, char *argv[])
 	create_tree(root, 5);
 	traverse_preorder(root);
 
+	int nodes = 1;
+	nnodes(root, &nodes);
+	printf("nodes %d\n", nodes);
+
+	int leaves = 0;
+	nleaves(root, &leaves);
+	printf("leaves %d\n", leaves);
+
 	return 0;
 }
 
@@ -73,6 +81,36 @@ void print_node(struct tree *node)
 	printf("Node%12p   ", node);
 	printf("Level%3d   x %2d y %2d  parent %12p\n",
 	       node->level, node->x, node->y, node->parent);
+}
+
+/*
+ * count total number of leaves from node
+ */
+void nleaves(struct tree *node, int *n)
+{
+	if (node->left == NULL && node->right == NULL) {
+		*n += 1;
+		return;
+	}
+	if (node->left != NULL)
+		nleaves(node->left, n);
+	if (node->right != NULL)
+		nleaves(node->right, n);
+}
+
+/*
+ * count total number of nodes below node
+ */
+void nnodes(struct tree *node, int *n)
+{
+	if (node->left != NULL) {
+		*n += 1;
+		nnodes(node->left, n);
+	}
+	if (node->right != NULL) {
+		*n += 1;
+		nnodes(node->right, n);
+	}
 }
 
 void traverse_preorder(struct tree *node)

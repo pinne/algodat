@@ -11,6 +11,8 @@ down	tree.h	/^	struct tree *down;$/;"	m	struct:tree	typeref:struct:tree::tree
 left	tree.h	/^	struct tree *left;$/;"	m	struct:tree	typeref:struct:tree::tree
 level	tree.h	/^	int level;$/;"	m	struct:tree
 main	tree.c	/^int main(int argc, char *argv[])$/;"	f
+nleaves	tree.c	/^void nleaves(struct tree *node, int *n)$/;"	f
+nnodes	tree.c	/^int nnodes(struct tree *node)$/;"	f
 parent	tree.h	/^	struct tree *parent;$/;"	m	struct:tree	typeref:struct:tree::tree
 print_node	tree.c	/^void print_node(struct tree *node)$/;"	f
 right	tree.h	/^	struct tree *right;$/;"	m	struct:tree	typeref:struct:tree::tree
