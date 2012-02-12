@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define NDEBUG
 #define STORLEK 100
 int tab[STORLEK][STORLEK];
 int sum[STORLEK][STORLEK];
@@ -49,12 +50,16 @@ void berakna()
 	sum[0][0] = root->val;
 	enqueue(root);
 
+#ifndef NDEBUG
 	print_tab();
+#endif
 	struct queue *node;
 
 	while (1) {
 		node = dequeue();
+#ifndef NDEBUG
 		print_element(node);
+#endif
 		if (node->level == STORLEK-1) {
 			free(node);
 			break;
@@ -90,7 +95,9 @@ void berakna()
 	}
 	free(root);
 	find_max_bottom();
+#ifndef NDEBUG
 	print_sum();
+#endif
 	//	print_tab();
 }
 
