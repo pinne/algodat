@@ -31,5 +31,6 @@ void traverse_levelorder(struct tree *);
 void clear_children(struct tree *);
 int nleaves(struct tree *, int);
 int nnodes(struct tree *, int *);
+int height(struct tree *);
 
 #endif

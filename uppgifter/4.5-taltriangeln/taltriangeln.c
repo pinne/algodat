@@ -97,8 +97,8 @@ void berakna()
 	find_max_bottom();
 #ifndef NDEBUG
 	print_sum();
+	print_tab();
 #endif
-	//	print_tab();
 }
 
 //void berakna(int rad, int kol, int s)

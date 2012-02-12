@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
 	
 	printf("nodes %d\n", nnodes(root, 0));
 	printf("leaves %d\n", nleaves(root, 0));
+	printf("height %d\n", height(root));
 
 	return 0;
 }
@@ -97,8 +98,25 @@ int nleaves(struct tree *node, int n)
  */
 int nnodes(struct tree *node, int *n)
 {
-	if (node != NULL)
+	
+	if (node == NULL)
+		return 0;
+	else
 		return 1 + nnodes(node->right, 0) + nnodes(node->left, 0);
+}
+
+int height(struct tree *node)
+{
+	if (node->left == NULL && node->right == NULL) {
+		return 0;
+	} else {
+		int left = 1 + height(node->left);
+		int right = 1 + height(node->right);
+		if (left > right)
+			return left;
+		else
+			return right;
+	}
 }
 
 void traverse_preorder(struct tree *node)

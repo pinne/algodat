@@ -8,6 +8,7 @@ TWO_DIMENSION	tree.h	8;"	d
 clear_children	tree.c	/^void clear_children(struct tree *node)$/;"	f
 create_tree	tree.c	/^void create_tree(struct tree *node, int depth)$/;"	f
 down	tree.h	/^	struct tree *down;$/;"	m	struct:tree	typeref:struct:tree::tree
+height	tree.c	/^int height(struct tree *node)$/;"	f
 left	tree.h	/^	struct tree *left;$/;"	m	struct:tree	typeref:struct:tree::tree
 level	tree.h	/^	int level;$/;"	m	struct:tree
 main	tree.c	/^int main(int argc, char *argv[])$/;"	f
