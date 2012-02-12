@@ -29,7 +29,7 @@ void traverse_inorder(struct tree *);
 void traverse_postorder(struct tree *);
 void traverse_levelorder(struct tree *);
 void clear_children(struct tree *);
-void nleaves(struct tree *, int *);
-void nnodes(struct tree *, int *);
+int nleaves(struct tree *, int);
+int nnodes(struct tree *, int *);
 
 #endif

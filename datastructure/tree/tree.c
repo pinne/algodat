@@ -7,14 +7,9 @@ int main(int argc, char *argv[])
 
 	create_tree(root, 5);
 	traverse_preorder(root);
-
-	int nodes = 1;
-	nnodes(root, &nodes);
-	printf("nodes %d\n", nodes);
-
-	int leaves = 0;
-	nleaves(root, &leaves);
-	printf("leaves %d\n", leaves);
+	
+	printf("nodes %d\n", nnodes(root, 0));
+	printf("leaves %d\n", nleaves(root, 0));
 
 	return 0;
 }
@@ -86,31 +81,24 @@ void print_node(struct tree *node)
 /*
  * count total number of leaves from node
  */
-void nleaves(struct tree *node, int *n)
+int nleaves(struct tree *node, int n)
 {
-	if (node->left == NULL && node->right == NULL) {
-		*n += 1;
-		return;
-	}
+	if (node->left == NULL && node->right == NULL)
+		return 1;
 	if (node->left != NULL)
-		nleaves(node->left, n);
+		n += nleaves(node->left, 0);
 	if (node->right != NULL)
-		nleaves(node->right, n);
+		n += nleaves(node->right, 0);
+	return n;
 }
 
 /*
- * count total number of nodes below node
+ * count total number of nodes including start node
  */
-void nnodes(struct tree *node, int *n)
+int nnodes(struct tree *node, int *n)
 {
-	if (node->left != NULL) {
-		*n += 1;
-		nnodes(node->left, n);
-	}
-	if (node->right != NULL) {
-		*n += 1;
-		nnodes(node->right, n);
-	}
+	if (node != NULL)
+		return 1 + nnodes(node->right, 0) + nnodes(node->left, 0);
 }
 
 void traverse_preorder(struct tree *node)
@@ -120,10 +108,6 @@ void traverse_preorder(struct tree *node)
 	print_node(node);
 	traverse_preorder(node->left);
 	traverse_preorder(node->right);
-#ifndef TWO_DIMENSION
-	traverse_preorder(node->up);
-	traverse_preorder(node->down);
-#endif
 }
 
 void traverse_inorder(struct tree *node)
@@ -133,10 +117,6 @@ void traverse_inorder(struct tree *node)
 	traverse_inorder(node->left);
 	print_node(node);
 	traverse_inorder(node->right);
-#ifndef TWO_DIMENSION
-	traverse_inorder(node->up);
-	traverse_inorder(node->down);
-#endif
 }
 
 void traverse_postorder(struct tree *node)
@@ -145,9 +125,5 @@ void traverse_postorder(struct tree *node)
 		return;
 	traverse_postorder(node->left);
 	traverse_postorder(node->right);
-#ifndef TWO_DIMENSION
-	traverse_postorder(node->up);
-	traverse_postorder(node->down);
-#endif
 	print_node(node);
 }
