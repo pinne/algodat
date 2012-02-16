@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+SIZE	uppg3.c	/^int SIZE;$/;"	v
+fill_array	uppg3.c	/^void fill_array(char *filename)$/;"	f
+main	uppg3.c	/^int main(int argc, char *argv[])$/;"	f
+padding	uppg3.c	/^void padding(void)$/;"	f
+print_tab	uppg3.c	/^void print_tab(void)$/;"	f
+print_try	uppg3.c	/^void print_try(void)$/;"	f
+reset_try	uppg3.c	/^void reset_try(void)$/;"	f
+tab	uppg3.c	/^int tab[100][100];$/;"	v
+test	uppg3.c	/^void test(void)$/;"	f
+try	uppg3.c	/^int try[100][100];$/;"	v
+walk	uppg3.c	/^void walk(int row, int col, int moves)$/;"	f

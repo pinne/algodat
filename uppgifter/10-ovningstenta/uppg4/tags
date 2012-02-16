@@ -1,0 +1,16 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+STORLEK	uppg4.c	4;"	d	file:
+append	uppg4.c	/^void append(int n, int len)$/;"	f
+fall_down	uppg4.c	/^void fall_down(int row, int col, int len)$/;"	f
+fill_array	uppg4.c	/^void fill_array(void)$/;"	f
+main	uppg4.c	/^int main(void)$/;"	f
+max	uppg4.c	/^int max = 0;$/;"	v
+print_tab	uppg4.c	/^void print_tab(void)$/;"	f
+sum	uppg4.c	/^int sum[STORLEK];$/;"	v
+tab	uppg4.c	/^int tab[STORLEK][STORLEK];$/;"	v
+test	uppg4.c	/^void test()$/;"	f

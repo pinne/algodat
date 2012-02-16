@@ -6,13 +6,12 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 append	lnklst2.c	/^void append(namntyp **sl, namntyp *list)$/;"	f
 laes_in	lnklst2.c	/^void laes_in(namntyp **l1, char filnamn[])$/;"	f
-last_of_list	lnklst2.c	/^struct namntyp *last_of_list(namntyp *list)$/;"	f
-len	lnklst2.c	/^int len(namntyp *lista)$/;"	f
+len	lnklst2.c	/^int len(namntyp *list)$/;"	f
+list_tail	lnklst2.c	/^struct namntyp *list_tail(namntyp *list)$/;"	f
 main	lnklst2.c	/^int main(int argc, char *argv[])$/;"	f
-merge	lnklst2.c	/^void merge(namntyp *l1, namntyp *l2, namntyp **sl)$/;"	f
+merge	lnklst2.c	/^void merge(namntyp *left, namntyp *right, namntyp **sl)$/;"	f
 namn	lnklst2.c	/^	char namn[10];$/;"	m	struct:namntyp	file:
 namntyp	lnklst2.c	/^typedef struct namntyp {$/;"	s	file:
 namntyp	lnklst2.c	/^} namntyp;$/;"	t	typeref:struct:namntyp	file:
 nasta	lnklst2.c	/^	struct namntyp *nasta;$/;"	m	struct:namntyp	typeref:struct:namntyp::namntyp	file:
-rmerge	lnklst2.c	/^void rmerge(namntyp *l1, namntyp *l2, namntyp **sl)$/;"	f
 skriv_ut	lnklst2.c	/^void skriv_ut(namntyp *sl)$/;"	f

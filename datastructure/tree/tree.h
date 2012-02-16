@@ -3,11 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <limits.h>
 
 #define TWO_DIMENSION
 
 struct tree {
+	int key;
 	int level;
 	int x;
 	int y;
@@ -23,6 +25,8 @@ struct tree {
 void create_tree(struct tree *, int);
 void do_level(struct tree *, int);
 void print_node(struct tree *);
+void insert(struct tree *, struct tree *);
+struct tree *create_random_node(void);
 struct tree *spawn_child(struct tree *, struct tree *);
 void traverse_preorder(struct tree *);
 void traverse_inorder(struct tree *);

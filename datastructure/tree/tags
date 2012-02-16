@@ -4,11 +4,13 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-TWO_DIMENSION	tree.h	8;"	d
+TWO_DIMENSION	tree.h	9;"	d
 clear_children	tree.c	/^void clear_children(struct tree *node)$/;"	f
+create_random_node	tree.c	/^struct tree *create_random_node(void)$/;"	f
 create_tree	tree.c	/^void create_tree(struct tree *node, int depth)$/;"	f
 down	tree.h	/^	struct tree *down;$/;"	m	struct:tree	typeref:struct:tree::tree
 height	tree.c	/^int height(struct tree *node)$/;"	f
+insert	tree.c	/^void insert(struct tree *node, struct tree *new)$/;"	f
 left	tree.h	/^	struct tree *left;$/;"	m	struct:tree	typeref:struct:tree::tree
 level	tree.h	/^	int level;$/;"	m	struct:tree
 main	tree.c	/^int main(int argc, char *argv[])$/;"	f
@@ -23,5 +25,6 @@ traverse_postorder	tree.c	/^void traverse_postorder(struct tree *node)$/;"	f
 traverse_preorder	tree.c	/^void traverse_preorder(struct tree *node)$/;"	f
 tree	tree.h	/^struct tree {$/;"	s
 up	tree.h	/^	struct tree *up;$/;"	m	struct:tree	typeref:struct:tree::tree
+value	tree.h	/^	int value;$/;"	m	struct:tree
 x	tree.h	/^	int x;$/;"	m	struct:tree
 y	tree.h	/^	int y;$/;"	m	struct:tree

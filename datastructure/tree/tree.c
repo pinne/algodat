@@ -4,15 +4,30 @@
 int main(int argc, char *argv[])
 {
 	struct tree *root = malloc(sizeof(struct tree));
+	root->key = rand() % 1000000;
 
-	create_tree(root, 5);
-	traverse_preorder(root);
-	
+	//create_tree(root, 5);
+
+	srand(time(NULL));
+	int i;
+	for (i = 1; i < 1000; i += 1) {
+		insert(root, create_random_node());
+	}
+
+	traverse_inorder(root);
+
 	printf("nodes %d\n", nnodes(root, 0));
 	printf("leaves %d\n", nleaves(root, 0));
 	printf("height %d\n", height(root));
 
 	return 0;
+}
+
+struct tree *create_random_node(void)
+{
+	struct tree *new = malloc(sizeof(struct tree));
+	new->key = rand() % 1000000;
+	return new;
 }
 
 void create_tree(struct tree *node, int depth)
@@ -29,6 +44,25 @@ void create_tree(struct tree *node, int depth)
 		node->down = spawn_child(node, node->down);
 		create_tree(node->down, depth);
 #endif
+	}
+}
+
+void insert(struct tree *node, struct tree *new)
+{
+	if (node == NULL) {
+		if (new->parent->left == node)
+			new->parent->left = new;
+		else
+			new->parent->right = new;
+		node = new;
+	} else if (new->key < node->key) {
+		new->parent = node;
+		new->level = node->level + 1;
+		insert(node->left, new);
+	} else {
+		new->parent = node;
+		new->level = node->level + 1;
+		insert(node->right, new);
 	}
 }
 
@@ -75,8 +109,9 @@ void clear_children(struct tree *node)
 void print_node(struct tree *node)
 {
 	printf("Node%12p   ", node);
+	printf("Value %d\t", node->key);
 	printf("Level%3d   x %2d y %2d  parent %12p\n",
-	       node->level, node->x, node->y, node->parent);
+			node->level, node->x, node->y, node->parent);
 }
 
 /*
@@ -98,7 +133,7 @@ int nleaves(struct tree *node, int n)
  */
 int nnodes(struct tree *node, int *n)
 {
-	
+
 	if (node == NULL)
 		return 0;
 	else
@@ -107,7 +142,7 @@ int nnodes(struct tree *node, int *n)
 
 int height(struct tree *node)
 {
-	if (node->left == NULL && node->right == NULL) {
+	if (node == NULL || (node->left == NULL && node->right == NULL)) {
 		return 0;
 	} else {
 		int left = 1 + height(node->left);
