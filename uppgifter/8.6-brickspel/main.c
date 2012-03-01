@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define LEGAL_MOVE ((brick[from] == WHITE || brick[from] == BLACK) \
+		    && brick[to] == EMPTY)
 #define MOVELIM 15
 #define SIZE     7
 #define EMPTY    0
@@ -11,12 +13,12 @@ int stack[100];
 int stack_len = 0;
 
 void push(int);
-int  pop(void);
+int pop(void);
 void print_stack(void);
 void print_array(int array[]);
 void move(int array[], int, int);
-int  swap(int array[], int, int);
-int  check(int array[]);
+int swap(int array[], int, int);
+int check(int array[]);
 
 int main(void)
 {
@@ -46,9 +48,8 @@ void move(int brick[], int to, int moves)
 	} else if (moves < MOVELIM) {
 		int from;
 		for (from = 1; from <= SIZE; from += 1) {
-			to = from + 1; /* one right */
-			if ((brick[from] == WHITE || brick[from] == BLACK)
-					&& brick[to] == EMPTY) {
+			to = from + 1;	/* one right */
+			if (LEGAL_MOVE) {
 				push(from);
 				push(to);
 				swap(brick, to, from);
@@ -58,9 +59,8 @@ void move(int brick[], int to, int moves)
 				pop();
 			}
 
-			to = from - 1; /* one left */
-			if ((brick[from] == WHITE || brick[from] == BLACK)
-					&& brick[to] == EMPTY) {
+			to = from - 1;	/* one left */
+			if (LEGAL_MOVE) {
 				push(from);
 				push(to);
 				swap(brick, to, from);
@@ -70,9 +70,8 @@ void move(int brick[], int to, int moves)
 				pop();
 			}
 
-			to = from + 2; /* two right */
-			if ((brick[from] == WHITE || brick[from] == BLACK)
-					&& brick[to] == EMPTY) {
+			to = from + 2;	/* two right */
+			if (LEGAL_MOVE) {
 				push(from);
 				push(to);
 				swap(brick, to, from);
@@ -82,9 +81,8 @@ void move(int brick[], int to, int moves)
 				pop();
 			}
 
-			to = from - 2; /* two left */
-			if ((brick[from] == WHITE || brick[from] == BLACK)
-					&& brick[to] == EMPTY) {
+			to = from - 2;	/* two left */
+			if (LEGAL_MOVE) {
 				push(from);
 				push(to);
 				swap(brick, to, from);
