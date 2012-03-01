@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BLACK	main.c	7;"	d	file:
+EMPTY	main.c	5;"	d	file:
+ILLEGAL	main.c	8;"	d	file:
+MOVELIM	main.c	3;"	d	file:
+SIZE	main.c	4;"	d	file:
+WHITE	main.c	6;"	d	file:
+check	main.c	/^int check(int array[])$/;"	f
+main	main.c	/^int main(void)$/;"	f
+move	main.c	/^void move(int brick[], int to, int moves)$/;"	f
+pop	main.c	/^int pop(void)$/;"	f
+print_array	main.c	/^void print_array(int arr[])$/;"	f
+print_stack	main.c	/^void print_stack(void)$/;"	f
+push	main.c	/^void push(int elem)$/;"	f
+stack	main.c	/^int stack[100];$/;"	v
+stack_len	main.c	/^int stack_len = 0;$/;"	v
+swap	main.c	/^int swap(int array[], int to, int from)$/;"	f

@@ -1,0 +1,35 @@
+#include <stdio.h>
+int kolumn[9]={0,0,0,0,0,0,0,0,0};
+int kolfri[9]={1,1,1,1,1,1,1,1,1};
+int uppfri[17]={1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+int nerfri[16]={1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+int antal=0;
+
+void SkrivUt(void){
+  //*** KOD IN HÄR
+}
+
+void AddQueen(int rad){
+  int kol;
+  rad++;
+  for(kol=1;kol<=8;kol++)
+    if(kolfri[kol] && uppfri[rad+kol] && nerfri[rad-kol+8]){
+      kolumn[rad]=kol;
+      kolfri[kol]=0;
+      uppfri[rad+kol]=0;
+      nerfri[rad-kol+8]=0;
+      if(rad==8)
+        SkrivUt();
+      else
+        AddQueen(rad);
+      kolfri[kol]=1;
+      uppfri[rad+kol]=1;
+      nerfri[rad-kol+8]=1;
+    }
+  rad--;
+}
+
+int main(void){
+  AddQueen(0);
+  printf("Antal lösningar %d\n",antal);
+}
