@@ -1,0 +1,34 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+COLORS	main.c	/^char *COLORS[N_COLORS] = {$/;"	v
+COLOR_COUNTER	main.c	/^int COLOR_COUNTER = 0;$/;"	v
+EMPTY	main.c	5;"	d	file:
+ENDCOLOR	main.c	17;"	d	file:
+MAP	main.c	/^int MAP[SIZE + 2][SIZE + 2] = {$/;"	v
+NSOLUTIONS	main.c	/^int NSOLUTIONS;$/;"	v
+N_COLORS	main.c	7;"	d	file:
+N_PIECES	main.c	20;"	d	file:
+N_UNIQUE	main.c	/^int N_UNIQUE;$/;"	v
+PIECES	main.c	/^char *PIECES[N_PIECES] = {$/;"	v
+SIZE	main.c	3;"	d	file:
+TAKEN	main.c	4;"	d	file:
+UNIQUE_SOLUTIONS	main.c	/^int *UNIQUE_SOLUTIONS;$/;"	v
+check	main.c	/^int check(void)$/;"	f
+fit	main.c	/^void fit(int count)$/;"	f
+impossible	main.c	/^int impossible(void)$/;"	f
+main	main.c	/^int main(int argc, char *argv[])$/;"	f
+place_7	main.c	/^int place_7(int i, int j)$/;"	f
+place_f	main.c	/^int place_f(int i, int j)$/;"	f
+place_j	main.c	/^int place_j(int i, int j)$/;"	f
+place_l	main.c	/^int place_l(int i, int j)$/;"	f
+print_color_map	main.c	/^void print_color_map(void)$/;"	f
+print_map	main.c	/^void print_map(void)$/;"	f
+remove_7	main.c	/^void remove_7(int i, int j)$/;"	f
+remove_f	main.c	/^void remove_f(int i, int j)$/;"	f
+remove_j	main.c	/^void remove_j(int i, int j)$/;"	f
+remove_l	main.c	/^void remove_l(int i, int j)$/;"	f
+save_identifier	main.c	/^void save_identifier(void)$/;"	f

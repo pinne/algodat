@@ -36,6 +36,8 @@ int stack_len;
 int brade[11][11];
 int losning[32][6];
 
+int animate = 1;
+
 void init(void)
 {
 	int i, j;
@@ -115,8 +117,6 @@ void print_stack(void)
 		printf("%d ", stack[i]);
 		if (i % STACKCYCLE == 0)
 			printf("\n");
-		else if (i % STACKCYCLE/2 == 0)
-			printf(" ");
 	}
 }
 
@@ -155,14 +155,14 @@ void play_stack(void)
 				} else if (brade[i][j] == NEW) {
 #ifndef NANSI
 					printf(COL_NEW);
-					printf(" O ");
+					printf(" o ");
 					printf(ENDCOLOR);
 #else
 					printf(" 0 ");
 #endif
 				} else if (brade[i][j] == SHADOW) {
 					printf(COL_SHADOW);
-					printf(" · ");
+					printf(" . ");
 					printf(ENDCOLOR);
 				} else if (brade[i][j] == EMPTY) {
 					printf(COL_EMPTY);
@@ -188,10 +188,11 @@ void nastadrag(int nr)
 	int k, n;
 	int lista[32][6];
 	if (nr == 31) {
-		printf("Lösning funnen\n");
-		play_stack();
-		//print_stack();
-
+		if (animate) {
+			play_stack();
+		} else {
+			print_stack();
+		}
 		exit(0);
 	} else {
 		draggen(lista, &n);
@@ -214,9 +215,11 @@ void nastadrag(int nr)
 	}
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	init();
+	if (argc > 1)
+		animate = 0;
 	stack_len = 0;
 	nastadrag(0);
 	return 0;

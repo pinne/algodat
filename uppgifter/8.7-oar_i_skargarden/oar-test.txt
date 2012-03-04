@@ -1,0 +1,5 @@
+4 6
+xxxooo
+xxxooo
+oooxxx
+oooxxx

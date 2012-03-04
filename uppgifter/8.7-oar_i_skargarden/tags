@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+DEBUG	main.c	5;"	d	file:
+LAND	main.c	7;"	d	file:
+MAP	main.c	/^char **MAP;$/;"	v
+TOTAL_ISLANDS	main.c	/^int TOTAL_ISLANDS;$/;"	v
+WATER	main.c	8;"	d	file:
+clean_up_map	main.c	/^void clean_up_map(int rows)$/;"	f
+count_islands	main.c	/^void count_islands(int rows, int cols)$/;"	f
+flood	main.c	/^int flood(int row, int col, int maxrow, int maxcol)$/;"	f
+load_map	main.c	/^void load_map(char filename[], int *rows, int *cols)$/;"	f
+main	main.c	/^int main(int argc, char *argv[])$/;"	f
+print_map	main.c	/^void print_map(int rows, int cols)$/;"	f

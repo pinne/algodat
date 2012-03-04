@@ -1,0 +1,18 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AddQueen	damer.c	/^void AddQueen(int rad, int size)$/;"	f
+NPRINT	damer.c	5;"	d	file:
+SkrivUt	damer.c	/^void SkrivUt(int size)$/;"	f
+antal	damer.c	/^int antal = 0;$/;"	v
+exec	damer.c	/^int exec;$/;"	v
+fill_array	damer.c	/^void fill_array(int array[], int item, int len)$/;"	f
+identifier	damer.c	/^unsigned long long int identifier(size)$/;"	f
+kolfri	damer.c	/^int *kolfri;$/;"	v
+kolumn	damer.c	/^int *kolumn;$/;"	v
+main	damer.c	/^int main(void)$/;"	f
+nerfri	damer.c	/^int *nerfri;$/;"	v
+uppfri	damer.c	/^int *uppfri;$/;"	v
