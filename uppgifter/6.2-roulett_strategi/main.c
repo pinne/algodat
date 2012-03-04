@@ -27,16 +27,20 @@ int main(int argc, char *argv[])
 		struct status *round = malloc(sizeof(struct status));
 		round->ngames = 0;
 		round->balance = start;
-		play_round(&round);
-		printf("%d", start);
-		printf("%f", (double)round->ngames/MAXGAMES);
+		play_thousand_rounds(&round);
 		free(round);
 	}
 	return 0;
 }
 
-void play_thousand_rounds(void)
+void play_thousand_rounds(struct status **round)
 {
+	int ngames = 0;
+	int balance = (*round)->balance;
+	int i;
+	for (i = 0; i < MAXGAMES; i += 1) {
+	}
+	printf("%f", (*round)->ngames/MAXGAMES);
 }
 
 void play_round(struct status **round)

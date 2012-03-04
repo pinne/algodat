@@ -47,6 +47,7 @@ void move(int brick[], int to, int moves)
 		return;
 	} else if (moves < MOVELIM) {
 		int from;
+		/* legal range */
 		for (from = 1; from <= SIZE; from += 1) {
 			to = from + 1;	/* one right */
 			if (LEGAL_MOVE) {

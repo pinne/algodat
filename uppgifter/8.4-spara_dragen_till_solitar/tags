@@ -4,35 +4,33 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-FIRST	queue.h	/^} *FIRST, *LAST;$/;"	v	typeref:struct:queue
-LAST	queue.h	/^} *FIRST, *LAST;$/;"	v	typeref:struct:queue
-NDEBUG	queue.c	3;"	d	file:
+ANIMATIONDELAY	Solitar.c	29;"	d	file:
+COL_EMPTY	Solitar.c	15;"	d	file:
+COL_EMPTY	Solitar.c	8;"	d	file:
+COL_ILLEGAL	Solitar.c	12;"	d	file:
+COL_ILLEGAL	Solitar.c	19;"	d	file:
+COL_NEW	Solitar.c	10;"	d	file:
+COL_NEW	Solitar.c	17;"	d	file:
+COL_SHADOW	Solitar.c	11;"	d	file:
+COL_SHADOW	Solitar.c	18;"	d	file:
+COL_TAKEN	Solitar.c	16;"	d	file:
+COL_TAKEN	Solitar.c	9;"	d	file:
+EMPTY	Solitar.c	23;"	d	file:
+ENDCOLOR	Solitar.c	13;"	d	file:
+ENDCOLOR	Solitar.c	20;"	d	file:
+ILLEGAL	Solitar.c	27;"	d	file:
+NEW	Solitar.c	25;"	d	file:
+SHADOW	Solitar.c	26;"	d	file:
+STACKCYCLE	Solitar.c	30;"	d	file:
+TAKEN	Solitar.c	24;"	d	file:
 brade	Solitar.c	/^int brade[11][11];$/;"	v
-dequeue	queue.c	/^struct queue *dequeue()$/;"	f
 draggen	Solitar.c	/^void draggen(int lista[32][6], int *n)$/;"	f
-enqueue	queue.c	/^void enqueue(struct queue *element)$/;"	f
 init	Solitar.c	/^void init(void)$/;"	f
-init_queue	queue.c	/^void init_queue(void)$/;"	f
 losning	Solitar.c	/^int losning[32][6];$/;"	v
 main	Solitar.c	/^int main(void)$/;"	f
-main	main.c	/^int main(void){$/;"	f
-main	queue.c	/^int main(int argc, char *argv[])$/;"	f
 nastadrag	Solitar.c	/^void nastadrag(int nr)$/;"	f
-next	queue.h	/^	struct queue *next;$/;"	m	struct:queue	typeref:struct:queue::queue
-next	stack.h	/^	struct stack_elem *next;$/;"	m	struct:stack_elem	typeref:struct:stack_elem::stack_elem
-prev	queue.h	/^	struct queue *prev;$/;"	m	struct:queue	typeref:struct:queue::queue
-print_element	queue.c	/^void print_element(struct queue *element)$/;"	f
-print_queue	queue.c	/^void print_queue()$/;"	f
-queue	queue.h	/^struct queue {$/;"	s
-queue_len	queue.c	/^int queue_len(void)$/;"	f
-stack	stack.h	/^struct stack {$/;"	s
-stack_depth	stack.c	/^int stack_depth(void)$/;"	f
-stack_destroy	stack.c	/^struct stack_elem stack_destroy(void)$/;"	f
-stack_elem	stack.h	/^struct stack_elem {$/;"	s
-stack_init	stack.c	/^void stack_init(struct stack *ptr)$/;"	f
-stack_pop	stack.c	/^struct stack_elem stack_pop(void)$/;"	f
-stack_push	stack.c	/^void stack_push(struct stack *top, struct *stack_elem)$/;"	f
-top	stack.h	/^	struct stack_elem *top;$/;"	m	struct:stack	typeref:struct:stack::stack_elem
-val	queue.h	/^	int val;$/;"	m	struct:queue
-x	stack.h	/^	int x;$/;"	m	struct:stack_elem
-y	stack.h	/^	int y;$/;"	m	struct:stack_elem
+play_stack	Solitar.c	/^void play_stack(void)$/;"	f
+print_stack	Solitar.c	/^void print_stack(void)$/;"	f
+stack	Solitar.c	/^int stack[10000];$/;"	v
+stack_head	Solitar.c	/^int stack_head = 0;$/;"	v
+stack_len	Solitar.c	/^int stack_len;$/;"	v

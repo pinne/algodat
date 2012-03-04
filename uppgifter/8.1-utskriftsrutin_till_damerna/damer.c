@@ -1,86 +1,120 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
-#define PRINT
-#define SIZE 3
+#define NPRINT
 
-/*
- * http://www.wolframalpha.com/input/?i=Fit[{{0%2C+0}%2C+{1%2C+1}%2C{5%2C+15}%2C{7%2C+149}%2C{8%2C+512}%2C{10%2C+8042}%2C{12%2C+164246}}%2C{1%2Cn%2Cn^2%2Cn^3%2Cn^4}%2Cn]
- */ 
-int kolumn[SIZE] = { 0, 0, 0, 0, 0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0, 0, 0, 0,0, 0, 0, 0,0, 0, 0, 0,0, 0, 0, 0,0, 0, 0, 0,0, 0, 0, 0,0, 0, 0, 0,0, 0, 0, 0,0, 0, 0, 0,0, 0, 0, 0,0, 0, 0, 0,0, 0, 0, 0,0, 0, 0, 0,             0, 0, 0, 0, 0, 0 };
-int kolfri[SIZE] = { 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,            1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1,       1, 1, 1, 1, 1, 1, 1 };
-int uppfri[SIZE*2-1] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-int nerfri[SIZE*2-2] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+void AddQueen(int rad, int size);
+unsigned long long int identifier(int size);
+void fill_array(int array[], int item, int len);
+void SkrivUt(int size);
 
-int antal = 0;
-int exec = 0;
+int *kolumn;
+int *kolfri;
+int *uppfri;
+int *nerfri;
 
-unsigned long long int identifier(void)
+int ANTAL = 0;
+int EXEC;
+
+int main(void)
 {
-	int i;
-	int id = 0;
-	for (i = 0; i < SIZE; i += 1) {
-              id += kolumn[i] * pow(2, i);
+	int size;
+	char solutions[1000] = "{";
+	for (size = 1; size < 14; size += 1) {
+		EXEC = 0;
+		kolumn = malloc(sizeof(int) * size);
+		kolfri = malloc(sizeof(int) * size);
+		uppfri = malloc(sizeof(int) * (size * 2) - 0);
+		nerfri = malloc(sizeof(int) * (size * 2) - 0);
+		fill_array(kolumn, 0, size);
+		fill_array(kolfri, 1, size);
+		fill_array(uppfri, 1, size*2);
+		fill_array(nerfri, 1, size*2);
+		AddQueen(0, size);
+#ifndef NPRINT
+		printf("Antal lösningar %d\n", ANTAL);
+		printf("{%d, %d}\n", size, EXEC);
+#endif
+		sprintf(solutions, "%s{%d, %d}, ", solutions, size, EXEC);
+		free(kolumn);
+		free(kolfri);
+		free(uppfri);
+		free(nerfri);
 	}
-	return id;
+	solutions[strlen(solutions) - 2] = '\0';
+	strcat(solutions, "}");
+	printf("%s\n", solutions);
+	return 0;
 }
 
-void SkrivUt(void)
+void AddQueen(int rad, int size)
 {
-#ifndef NPRINT
-	char board[SIZE][SIZE];
+	int kol;
+	rad++;
+	EXEC += 1;
+	for (kol = 1; kol < size; kol++) {
+		if (kolfri[kol] && uppfri[rad + kol]
+				&& nerfri[rad - kol + size-1]) {
+			kolumn[rad] = kol;
+			kolfri[kol] = 0;
+			uppfri[rad + kol] = 0;
+			nerfri[rad - kol + size-1] = 0;
+			if (rad == size-1) {
+				SkrivUt(size);
+				ANTAL += 1;
+			} else {
+				AddQueen(rad, size);
+			}
+			kolfri[kol] = 1;
+			uppfri[rad + kol] = 1;
+			nerfri[rad - kol + size-1] = 1;
+		}
+	}
+	rad--;
+}
+
+void SkrivUt(int size)
+{
+	char board[100][100];
 
 	int i;
-	for (i = 0; i < SIZE; i += 1) {
+	for (i = 0; i < size; i += 1) {
 		int j;
-		for (j = 0; j < SIZE; j += 1) {
+		for (j = 0; j < size; j += 1) {
 			board[i][j] = '·';
 		}
 	}
-	for (i = 0; i < SIZE; i += 1) {
+	for (i = 0; i < size; i += 1) {
 		board[i][kolumn[i]] = '0';
 	}
-	for (i = 0; i < SIZE; i += 1) {
+#ifndef NPRINT
+	for (i = 0; i < size; i += 1) {
 		int j;
-		for (j = 0; j < SIZE; j += 1) {
+		for (j = 0; j < size; j += 1) {
 			printf("%2c", board[i][j]);
 		}
 		printf("\n");
 	}
+	printf("id %Ld\n", identifier(size));
 #endif
-	printf("id %Ld\n", identifier());
 }
 
-void AddQueen(int rad)
+unsigned long long int identifier(size)
 {
-	int kol;
-	rad++;
-	exec++;
-	for (kol = 1; kol < SIZE; kol++)
-		if (kolfri[kol] && uppfri[rad + kol]
-				&& nerfri[rad - kol + SIZE-1]) {
-			kolumn[rad] = kol;
-			kolfri[kol] = 0;
-			uppfri[rad + kol] = 0;
-			nerfri[rad - kol + SIZE-1] = 0;
-			if (rad == SIZE-1) {
-				SkrivUt();
-				antal += 1;
-			}
-			else
-				AddQueen(rad);
-			kolfri[kol] = 1;
-			uppfri[rad + kol] = 1;
-			nerfri[rad - kol + SIZE-1] = 1;
-		}
-	rad--;
+	int i;
+	int id = 0;
+	for (i = 0; i < size; i += 1) {
+		id += kolumn[i] * pow(2, i);
+	}
+	return id;
 }
 
-int main(void)
+void fill_array(int array[], int item, int len)
 {
-	AddQueen(0);
-	printf("Antal lösningar %d\n", antal);
-	printf("{%d, %d}\n", SIZE, exec);
-	return 0;
+	int i;
+	for (i = 0; i < len; i += 1)
+		array[i] = item;
 }
+
