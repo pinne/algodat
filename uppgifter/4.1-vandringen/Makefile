@@ -1,7 +1,7 @@
 # Author: skers@kth.se Varm kod
 CC = gcc
 OBJS = main.o tree.o queue.o
-COMPILER_FLAGS = -Wall -g
+COMPILER_FLAGS = -Wall -g -O2
 #COMPILER_FLAGS = -Wall -O2
 UNAME := $(shell uname -s)
 INCLUDE = 

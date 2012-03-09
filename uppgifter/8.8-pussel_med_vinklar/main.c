@@ -38,12 +38,14 @@ int MAP[SIZE + 2][SIZE + 2] = {
 };
 
 int NSOLUTIONS;
-long long int UNIQUE_SOLUTIONS[100000];
+unsigned long long int UNIQUE_SOLUTIONS[100000];
 int N_UNIQUE;
 
 void fit(int count);
+int impossible(void);
 int check(void);
-int save_identifier(void);
+unsigned long long int checksum(void);
+int save_checksum(unsigned long long int sum);
 void print_map(void);
 void print_color_map(void);
 int place_j(int i, int j);
@@ -59,11 +61,12 @@ int main(int argc, char *argv[])
 {
 	NSOLUTIONS = 0;
 	N_UNIQUE = 0;
+
 	MAP[1][3] = TAKEN;
 	print_color_map();
 
 	fit(0);
-	printf("%d solutions\n", NSOLUTIONS);
+	printf("Solutions %d\n", NSOLUTIONS);
 
 	printf("Computed sums: ");
 	int i;
@@ -75,40 +78,18 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-int impossible(void)
-{
-	int i, j;
-	for (i = 1; i <= SIZE; i += 1) {
-		for (j = 1; j <= SIZE; j += 1) {
-			if (MAP[i][j] == EMPTY) {
-				/* EMPTY with four neighbors makes a hole */
-				int neighbors = 0;
-				if (MAP[i-1][j] == TAKEN)
-					neighbors += 1;
-				if (MAP[i+1][j] == TAKEN)
-					neighbors += 1;
-				if (MAP[i][j-1] == TAKEN)
-					neighbors += 1;
-				if (MAP[i][j+1] == TAKEN)
-					neighbors += 1;
-				if (neighbors == 4) {
-					return 0;
-				}
-			}
-		}
-	}
-	return -1;
-}
-
 void fit(int count)
 {
 	if (check() == 0) {
+		/* solution found */
 		NSOLUTIONS += 1;
-		//print_map();
-		if (save_identifier() == 0)
+		if (save_checksum(checksum()) == 0) {
+			/* found unique solution */
 			print_color_map();
+		}
 		return;
 	} else if (impossible() != 0 && count < 8) {
+		/* place new piece */
 		int i;
 		for (i = 1; i < SIZE; i += 1) {
 			int j;
@@ -136,6 +117,9 @@ void fit(int count)
 	}
 }
 
+/*
+ * Puzzle finished?
+ */
 int check(void)
 {
 	int i;
@@ -149,30 +133,57 @@ int check(void)
 	return 0;
 }
 
-void print_map(void)
+/*
+ * Exit early if hole
+ */
+int impossible(void)
 {
 	int i, j;
 	for (i = 1; i <= SIZE; i += 1) {
 		for (j = 1; j <= SIZE; j += 1) {
-			printf("%2d", MAP[i][j]);
+			if (MAP[i][j] == EMPTY) {
+				/* EMPTY with four neighbors makes a hole */
+				int neighbors = 0;
+				if (MAP[i-1][j] == TAKEN)
+					neighbors += 1;
+				if (MAP[i+1][j] == TAKEN)
+					neighbors += 1;
+				if (MAP[i][j-1] == TAKEN)
+					neighbors += 1;
+				if (MAP[i][j+1] == TAKEN)
+					neighbors += 1;
+				if (neighbors == 4) {
+					return 0;
+				}
+			}
 		}
-		printf("\n");
 	}
+	return -1;
 }
 
-int save_identifier(void)
+/*
+ * primitive checksum computation
+ */
+unsigned long long int checksum(void)
 {
 	int i, j;
-	long long int sum = 0;
+	unsigned long long int sum = 0;
 	for (i = 1; i <= SIZE; i += 1) {
 		for (j = 1; j <= SIZE; j += 1) {
-			if (MAP[i][j] == 0)
-				sum += pow(i, j) * 7;
-			else
+			if (MAP[i][j] == 0) {
+				/* avoid 0 multiplication */
+				sum += pow(i, j) * 13;
+			} else {
 				sum += pow(i, j) * MAP[i][j];
+			}
 		}
 	}
+	return sum;
+}
 
+int save_checksum(unsigned long long int sum)
+{
+	int i;
 	for (i = 0; i < N_UNIQUE; i += 1)
 		if (UNIQUE_SOLUTIONS[i] == sum)
 			return -1;
@@ -198,6 +209,18 @@ void print_color_map(void)
 	}
 	printf("\n");
 }          
+
+void print_map(void)
+{
+	int i, j;
+	for (i = 1; i <= SIZE; i += 1) {
+		for (j = 1; j <= SIZE; j += 1) {
+			printf("%2d", MAP[i][j]);
+		}
+		printf("\n");
+	}
+}
+
 int place_j(int i, int j)
 {
 	COLOR_COUNTER = 0;

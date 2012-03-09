@@ -4,7 +4,7 @@
 #include <string.h>
 
 #define NDEBUG
-#define MAXTREEDEPTH 100
+#define MAXTREEDEPTH 400
 
 int TARGET_X;
 int TARGET_Y;
@@ -103,9 +103,9 @@ void clear_queue(void)
 
 void breadcrumb(struct queue *node)
 {
-	if (node->level < VISITED[node->x + 200][node->y + 200]) {
+	if (node->level < VISITED[node->x + MAXTREEDEPTH/2][node->y + MAXTREEDEPTH/2]) {
 		enqueue(node);
-		VISITED[node->x + 200][node->y + 200] = node->level;
+		VISITED[node->x + MAXTREEDEPTH/2][node->y + MAXTREEDEPTH/2] = node->level;
 	} else {
 		free(node);
 	}
