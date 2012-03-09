@@ -66,7 +66,7 @@ void mergesort(int array[], int new[], int len)
 	merge(new, pivot, new + pivot, len - pivot, array);
 }
 
-void merge(int *left, int len_left, int *right, int len_right, int *target)
+void merge(int left[], int len_left, int right[], int len_right, int target[])
 {
 	int i = 0;
 	int j = 0;
