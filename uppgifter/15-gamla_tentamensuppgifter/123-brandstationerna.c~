@@ -1,0 +1,183 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int stack_len = 0;
+void push(int station);
+int pop(void);
+
+#define STATION 1
+#define EMPTY 0
+#define MAXDEPTS 15
+#define MAXMOVES 500
+
+int **distance;
+int *fire_dept;
+int global_min = 0;
+
+void fit(int max_dist, int ntowns, int town, int moves);
+int is_safe(int town, int max_dist, int ntowns);
+int test(int max_dist, int ntowns);
+void clean_up(int);
+void read_from_file(int);
+void print_distance(int ntowns);
+
+int main(int argc, char *argv[])
+{
+	FILE *fp;
+	fp = fopen("brand.dat", "rt");
+
+	int max_dist;
+	fscanf(fp, "%d", &max_dist);
+	int ntowns;
+	fscanf(fp, "%d", &ntowns);
+	rewind(fp);
+	fclose(fp);
+
+	distance = malloc(ntowns * sizeof(int *));
+	fire_dept = malloc(ntowns * sizeof(int));
+	int i;
+	for (i = 0; i < ntowns; i += 1)
+		fire_dept[i] = EMPTY;
+
+	for (i = 0; i < ntowns; i += 1)
+		distance[i] = malloc(ntowns * sizeof(int));
+
+	read_from_file(ntowns);
+	print_distance(ntowns);
+
+	new_permutation(1, ntowns);
+
+	clean_up(ntowns);
+	return 0;
+}
+
+void new_permutation(int depts, int ntowns)
+{
+	static char *array;
+	array = malloc(sizeof(char) * ntown + 1);
+	array[ntown] = '\0';
+
+
+}
+
+void swap(int* a, int* b) { 
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void printArray(int *a, int length) { 
+	printf("[");
+	int i;
+	for (i = 0; i < length; i++) { 
+		printf("%d",a[i]);
+		if (i != length - 1) printf(", ");
+	}
+	printf("]\n");
+}
+
+void permute(int *array,int i,int length) { 
+	if (length == i){
+		printArray(array,length);
+		return;
+	}
+	int j = i;
+	for (j = i; j < length; j++) { 
+		swap(array + i,array+j);
+		permute(array,i+1,length);
+		swap(array+i,array+j);
+	}
+	return;
+}
+
+void fit(int max_dist, int ntowns, int town, int moves)
+{
+	if (test(max_dist, ntowns) == 0) {
+		if (moves < global_min) {
+			global_min = moves;
+			printf("new min is %d\n", global_min);
+		}
+	} else if (moves < MAXMOVES) {
+		if (town + 1 <= ntowns) {
+			push(town);
+			fit(max_dist, ntowns, town + 1, moves + 1);
+			pop();
+		}
+	}
+}
+
+int test(int max_dist, int ntowns)
+{
+	int nsafe = 0;
+	int i;
+	for (i = 0; i < ntowns; i += 1) {
+		if (is_safe(i, max_dist, ntowns) == 0)
+			nsafe += 1;
+	}
+
+	if (nsafe < ntowns)
+		return -1;
+	else
+		return 0;
+}
+
+int is_safe(int town, int max_dist, int ntowns)
+{
+	int i;
+	for (i = 0; i < ntowns; i += 1) {
+		if (distance[town][i] <= max_dist && fire_dept[i] == STATION)
+			return 0;
+	}
+	return -1;
+}
+
+void push(int station)
+{
+	fire_dept[stack_len++] = station;
+}
+
+int pop(void)
+{
+	if (stack_len > 0)
+		return fire_dept[stack_len--];
+	else
+		return -1;
+}
+
+void read_from_file(int ntowns)
+{
+	FILE *fp;
+	fp = fopen("brand.dat", "rt");
+	int tmp;
+	fscanf(fp, "%d", &tmp);
+	fscanf(fp, "%d", &tmp);
+	int i;
+	for (i = 0; i < ntowns; i += 1) {
+		int j;
+		for (j = 0; j < ntowns; j += 1) {
+			fscanf(fp, "%d", &distance[i][j]);
+		}
+	}
+	fclose(fp);
+}
+
+void print_distance(int ntowns)
+{
+	int i;
+	for (i = 0; i < ntowns; i += 1) {
+		int j;
+		for (j = 0; j < ntowns; j += 1) {
+			printf("%3d", distance[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+void clean_up(int ntowns)
+{
+	int i;
+	for (i = 0; i < ntowns; i += 1)
+		free(distance[i]);
+	free(distance);
+}

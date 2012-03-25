@@ -1,0 +1,29 @@
+3   4.4-hissen_i_lustiga_huset/hissen.out 78 15 8 35
+2   10.1-implementera_mergesort/
+2   15-gamla_tentamensuppgifter/123-brandstationerna.out
+
+2   Uppgift 8.14:
+
+upp 5
+ned 7
+vån 25
+mål 23
+
+0   +   1
+1   +   5   =   6
+2   +   5   =   11
+3   +   5   =   16
+4   +   5   =   21
+5   -   7   =   14
+6   +   5   =   19
+7   -   7   =   12
+8   +   5   =   17
+9   +   5   =   22
+10  -   7   =   15
+11  +   5   =   20
+12  -   7   =   13
+13  +   5   =   18
+14  +   5   =   23
+
+Svar: 14 knapptryckningar.
+

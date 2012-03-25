@@ -1,0 +1,26 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+EMPTY	123-brandstationerna.c	10;"	d	file:
+MAXDEPTS	123-brandstationerna.c	11;"	d	file:
+MAXMOVES	123-brandstationerna.c	12;"	d	file:
+STATION	123-brandstationerna.c	9;"	d	file:
+clean_up	123-brandstationerna.c	/^void clean_up(int ntowns)$/;"	f
+distance	123-brandstationerna.c	/^int **distance;$/;"	v
+fire_dept	123-brandstationerna.c	/^int *fire_dept;$/;"	v
+fit	123-brandstationerna.c	/^void fit(int max_dist, int ntowns, int town, int moves)$/;"	f
+global_min	123-brandstationerna.c	/^int global_min = 0;$/;"	v
+is_safe	123-brandstationerna.c	/^int is_safe(int town, int max_dist, int ntowns)$/;"	f
+main	123-brandstationerna.c	/^int main(int argc, char *argv[])$/;"	f
+permute	123-brandstationerna.c	/^void permute(int *array, int i, int len)$/;"	f
+pop	123-brandstationerna.c	/^int pop(void)$/;"	f
+printArray	123-brandstationerna.c	/^void printArray(int *array, int len)$/;"	f
+print_distance	123-brandstationerna.c	/^void print_distance(int ntowns)$/;"	f
+push	123-brandstationerna.c	/^void push(int station)$/;"	f
+read_from_file	123-brandstationerna.c	/^void read_from_file(int ntowns)$/;"	f
+stack_len	123-brandstationerna.c	/^int stack_len = 0;$/;"	v
+swap	123-brandstationerna.c	/^void swap(int *a, int *b)$/;"	f
+test	123-brandstationerna.c	/^int test(int max_dist, int ntowns)$/;"	f
