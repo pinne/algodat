@@ -1,0 +1,21 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+GRAPH	musvandring.c	/^int GRAPH[64][2] = {{0}};$/;"	v
+LEN	musvandring.c	/^int LEN = 0;$/;"	v
+ROOM	musvandring.c	/^int ROOM = 1;$/;"	v
+ROWS	musvandring.c	/^int ROWS;$/;"	v
+STACK	musvandring.c	/^int STACK[64];$/;"	v
+empty_stack	musvandring.c	/^void empty_stack(void)$/;"	f
+fill_stack	musvandring.c	/^void fill_stack(int node)$/;"	f
+find_path	musvandring.c	/^int find_path(int dest)$/;"	f
+main	musvandring.c	/^int main(int argc, char *argv[])$/;"	f
+next	musvandring.c	/^void next(void)$/;"	f
+pop	musvandring.c	/^int pop(void)$/;"	f
+print_stack	musvandring.c	/^void print_stack(void)$/;"	f
+push	musvandring.c	/^void push(int dir)$/;"	f
+random_dir	musvandring.c	/^int random_dir(void)$/;"	f
+read_file	musvandring.c	/^void read_file(char filename[])$/;"	f

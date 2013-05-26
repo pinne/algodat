@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int GRAPH[64][2];
+int GRAPH[64][2] = {{0}};
 int ROWS;
 
 int STACK[64];
@@ -29,33 +29,43 @@ int find_path(int);
 int main(int argc, char *argv[])
 {
 	srand(time(0));
-	if (argc < 1)
+	if (argc < 2)
 		read_file("hus.txt");
 	else
 		read_file(argv[1]);
 
-	for (int i = 1; i <= ROWS+1; i++) {
+	/* print paths */
+	for (int i = 1; i <= 20; i++) {
 		fill_stack(i);
-		printf("%d: ", i);
-		//printf("ran_dir: %d\t", random_dir());
-		print_stack();
+		if (LEN > 0) {
+			printf("%d -> ", i);
+			print_stack();
+		}
 	}
 
+	/* read destination if not in command line arguments */
 	int destination;
-	printf("Destination: ");
-	scanf("%d", &destination);
+	if (argc < 3) {
+		printf("Destination: ");
+		scanf("%d", &destination);
+	} else {
+		destination = atoi(argv[2]);
+	}
 
-	ROOM = 1;
-	int start = 1;
+	int start = 1; /* mouse always start in this room */
 	int samples = 10000;
 	int tot_moves = 0;
+	/* run several simulations and sum their distance */
 	for (int i = 0; i < samples; i++) {
 		ROOM = start;
 		tot_moves += find_path(destination);
 	}
 	printf("It takes ~%.2f moves\n", (float)tot_moves/samples);
+
+	return 0;
 }
 
+/* run a simulation */
 int find_path(int dest)
 {
 	int moves = 0;
@@ -66,15 +76,20 @@ int find_path(int dest)
 	return moves;
 }
 
+/* randomly enter a room */
 void next(void)
 {
 	fill_stack(ROOM);
 	ROOM = random_dir();
 }
 
+/* return a random direction from current room */
 int random_dir(void)
 {
-	return STACK[rand() % LEN];
+	if (LEN == 0)
+		return 0;
+	else
+		return STACK[rand() % LEN];
 }
 
 void empty_stack(void)
@@ -83,9 +98,10 @@ void empty_stack(void)
 		pop();
 }
 
+/* fill stack of paths from distance table */
 void fill_stack(int node)
 {
-	LEN = 0;
+	empty_stack();
 	for (int i = 0; i < ROWS; i++) {
 		if (GRAPH[i][0] == node)
 			push(GRAPH[i][1]);
@@ -106,18 +122,18 @@ int pop(void)
 
 void print_stack(void)
 {
-	printf("-> ");
-	while (LEN > 0)
+	while (LEN > 0) {
 		printf("%2d", pop());
+	}
 	printf("\n");
 }
 
+/* read filename and fill distance table */
 void read_file(char filename[])
 {
 	FILE *fp;
 	fp = fopen(filename, "rt");
 	fscanf(fp, "%d\n", &ROWS);
-	//printf("%d\n", ROWS);
 
 	for (int i = 0; i < ROWS; i++) {
 		fscanf(fp, "%d %d\n", &GRAPH[i][0], &GRAPH[i][1]);
